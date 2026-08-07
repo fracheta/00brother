@@ -4,12 +4,10 @@
   <meta charset="UTF-8">
   <title>00brother - Boas-Vindas</title>
   <style>
-    /* Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: Arial, sans-serif;
-      color: #000000;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -20,7 +18,7 @@
     header {
       width: 100%;
       padding: 40px 20px;
-      background: url('fundo-logo.jpg') no-repeat center center; /* imagem atrás da logo */
+      background: url('fundo-logo.jpg') no-repeat center center;
       background-size: cover;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       display: flex;
@@ -29,7 +27,8 @@
     }
 
     .logo {
-      max-width: 390px; /* aumentada em 30% (antes 300px) */
+      max-width: 390px; /* aumentada em 30% */
+      border-radius: 20px; /* bordas arredondadas */
       filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
     }
 
@@ -41,32 +40,58 @@
       padding: 40px;
     }
 
-    .left-circle {
-      width: 300px;
-      height: 600px;
-      background-color: #89CFF0;
-      border-top-right-radius: 300px;
-      border-bottom-right-radius: 300px;
+    /* Banner rotativo */
+    .banner {
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 50%;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
-    .left-circle img {
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       position: absolute;
-      top: 50px;
-      width: 200px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
+    .banner img.active {
+      opacity: 1;
+    }
+
+    .banner button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px;
+      font-size: 1.1em;
+      background-color: #89CFF0;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .banner button:hover {
+      background-color: #6bbbe0;
+      transform: scale(1.05);
+    }
+
+    /* Texto boas-vindas */
     .overlay {
       background-color: rgba(255, 255, 255, 0.92);
       padding: 50px;
       border-radius: 15px;
       box-shadow: 0 4px 25px rgba(0,0,0,0.25);
-      max-width: 600px;
+      max-width: 45%;
       animation: fadeIn 2s ease-in-out;
     }
 
@@ -78,20 +103,20 @@
     h1 {
       font-size: 3em;
       margin-bottom: 20px;
-      color: #000000;
+      color: #000;
     }
 
     p {
       font-size: 1.4em;
       margin-bottom: 45px;
-      color: #333333;
+      color: #333;
     }
 
     .btn {
       padding: 16px 32px;
       font-size: 1.2em;
       background-color: #89CFF0;
-      color: #000000;
+      color: #000;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -105,8 +130,8 @@
 
     footer {
       width: 100%;
-      background-color: #000000;
-      color: #ffffff;
+      background-color: #000;
+      color: #fff;
       text-align: center;
       padding: 25px 20px;
       font-size: 1em;
@@ -118,7 +143,7 @@
     }
 
     .footer-links a {
-      color: #ffffff;
+      color: #fff;
       margin: 0 12px;
       text-decoration: none;
       font-weight: bold;
@@ -135,15 +160,6 @@
       width: 20px;
       height: 20px;
     }
-
-    @media (min-width: 768px) {
-      .logo {
-        max-width: 585px; /* aumentada em 30% (antes 450px) */
-      }
-      h1 { font-size: 3.2em; }
-      p { font-size: 1.6em; }
-      .btn { font-size: 1.3em; }
-    }
   </style>
 </head>
 <body>
@@ -152,10 +168,15 @@
   </header>
 
   <div class="main">
-    <div class="left-circle">
-      <img src="imagem-esquerda.jpg" alt="Imagem destaque">
+    <!-- Banner rotativo -->
+    <div class="banner">
+      <img src="banner1.jpg" class="active" alt="Banner 1">
+      <img src="banner2.jpg" alt="Banner 2">
+      <img src="banner3.jpg" alt="Banner 3">
+      <button onclick="window.location.href='conhecer.html'">Conhecer</button>
     </div>
 
+    <!-- Boas-vindas -->
     <div class="overlay">
       <h1>✨ Bem-vindo, Gestor ✨</h1>
       <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, dedicada ao desenvolvimento de aplicativos e projetos com impacto social e inovação.</p>
@@ -173,5 +194,17 @@
       <a href="https://wa.me/5546999999999" target="_blank"><img src="whatsapp-icon.png" alt="WhatsApp"> WhatsApp</a>
     </div>
   </footer>
+
+  <script>
+    // Script para rotacionar os banners
+    let banners = document.querySelectorAll('.banner img');
+    let index = 0;
+
+    setInterval(() => {
+      banners[index].classList.remove('active');
+      index = (index + 1) % banners.length;
+      banners[index].classList.add('active');
+    }, 5000); // troca a cada 5 segundos
+  </script>
 </body>
 </html>
