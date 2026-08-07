@@ -20,14 +20,14 @@
     }
 
     .splash img {
-      max-width: 85%; /* aumentei o tamanho inicial */
+      max-width: 85%; /* maior tamanho inicial */
       height: auto;
-      opacity: 0;
+      opacity: 0; /* começa transparente */
       transform: scale(1);
       animation: fadeZoom 4s forwards;
     }
 
-    /* Animação: aparece devagar e aumenta 20% */
+    /* Animação: aparece devagar (fade-in) e aumenta 20% */
     @keyframes fadeZoom {
       0% {
         opacity: 0;
@@ -42,7 +42,7 @@
     /* Responsividade extra */
     @media (min-width: 768px) {
       .splash img {
-        max-width: 480px; /* maior em telas grandes */
+        max-width: 500px; /* maior em telas grandes */
       }
     }
   </style>
