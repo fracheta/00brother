@@ -2,9 +2,22 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>00brother - Boas-Vindas</title>
+  
   <style>
-    /* Reset */
+    /* Variáveis para facilidade de manutenção */
+    :root {
+      --primary-color: #89CFF0;
+      --primary-hover: #6bbbe0;
+      --text-dark: #1a1a1a;
+      --text-muted: #4a4a4a;
+      --bg-dark: #000000;
+      --bg-card: rgba(255, 255, 255, 0.94);
+      --font-main: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    /* Reset global */
     * {
       margin: 0;
       padding: 0;
@@ -12,159 +25,203 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      color: #000000;
+      font-family: var(--font-main);
+      color: var(--text-dark);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
       align-items: center;
-      text-align: center;
       background: url('fundo-profissional.jpg') no-repeat center center fixed;
       background-size: cover;
+      line-height: 1.6;
     }
 
+    /* Header */
     header {
       width: 100%;
-      padding: 40px 20px;
-      background: url('fundo-logo.jpg') no-repeat center center; /* imagem atrás da logo */
+      padding: 30px 20px;
+      background: url('fundo-logo.jpg') no-repeat center center;
       background-size: cover;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .logo {
-      max-width: 300px;
-      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+      max-width: 260px;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
     }
 
-    .overlay {
-      background-color: rgba(255, 255, 255, 0.92);
-      padding: 50px;
-      border-radius: 15px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.25);
-      max-width: 900px;
-      margin-top: 60px;
-      animation: fadeIn 2s ease-in-out;
+    /* Conteúdo Principal (Card) */
+    .hero-card {
+      background-color: var(--bg-card);
+      padding: 40px 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      width: 90%;
+      margin: 40px auto;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+      backdrop-filter: blur(4px);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .hero-card h1 {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      color: var(--text-dark);
     }
 
-    h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
-      color: #000000;
+    .hero-card p {
+      font-size: 1.15rem;
+      margin-bottom: 32px;
+      color: var(--text-muted);
     }
 
-    p {
-      font-size: 1.4em;
-      margin-bottom: 45px;
-      color: #333333;
-    }
-
+    /* Botão CTA */
     .btn {
-      padding: 16px 32px;
-      font-size: 1.2em;
-      background-color: #89CFF0;
-      color: #000000;
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background-color: var(--primary-color);
+      color: var(--text-dark);
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
-    .btn:hover {
-      background-color: #6bbbe0;
-      transform: scale(1.08);
+    .btn:hover,
+    .btn:focus-visible {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      outline: 2px solid var(--primary-hover);
+      outline-offset: 2px;
     }
 
+    /* Rodapé */
     footer {
       width: 100%;
-      background-color: #000000; /* preto cobrindo toda largura */
-      color: #ffffff; /* letras brancas */
+      background-color: var(--bg-dark);
+      color: #ffffff;
       text-align: center;
-      padding: 25px 20px;
-      font-size: 1em;
+      padding: 30px 20px;
       margin-top: auto;
     }
 
     .footer-content p {
-      margin: 6px 0;
-      font-weight: 500;
+      font-size: 0.95rem;
+      margin: 4px 0;
+      color: #dddddd;
     }
 
     .footer-links {
-      margin-top: 15px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
       color: #ffffff;
-      margin: 0 15px;
       text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
     }
 
-    .footer-links a:hover {
-      color: #89CFF0; /* azul bebê no hover */
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--primary-color);
     }
 
     .footer-links img {
-      vertical-align: middle;
-      margin-right: 6px;
       width: 20px;
       height: 20px;
+      object-fit: contain;
     }
 
+    /* Animação */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Media Queries */
     @media (min-width: 768px) {
+      header {
+        padding: 40px 20px;
+      }
+
       .logo {
-        max-width: 450px;
+        max-width: 380px;
       }
-      h1 {
-        font-size: 3.2em;
+
+      .hero-card {
+        padding: 50px;
+        margin-top: 60px;
       }
-      p {
-        font-size: 1.6em;
+
+      .hero-card h1 {
+        font-size: 2.8rem;
       }
+
+      .hero-card p {
+        font-size: 1.3rem;
+      }
+
       .btn {
-        font-size: 1.3em;
+        font-size: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="logo2.img" alt="Logo da empresa" class="logo">
+    <img src="logo2.png" alt="Logo 00brother" class="logo">
   </header>
 
-  <div class="overlay">
+  <main class="hero-card">
     <h1>✨ Bem-vindo, Gestor ✨</h1>
     <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, dedicada ao desenvolvimento de aplicativos e projetos com impacto social e inovação.</p>
-    <button class="btn" onclick="window.location.href='principal.html'">Entrar no Painel</button>
-  </div>
+    
+    <a href="principal.html" class="btn">Entrar no Painel</a>
+  </main>
 
   <footer>
     <div class="footer-content">
       <p>© 2026 00brother - Grupo Corporativo</p>
       <p>Desenvolvimento de Apps | Impacto Social | Inovação</p>
       <p>Todos os direitos reservados</p>
-      <div class="footer-links">
+      
+      <nav class="footer-links" aria-label="Links de Contato">
         <a href="mailto:contato@00brother.com">
-          <img src="gmail-icon.png" alt="Gmail"> Gmail
+          <img src="gmail-icon.png" alt="" aria-hidden="true"> Gmail
         </a>
-        <a href="https://instagram.com/00brother" target="_blank">
-          <img src="instagram-icon.png" alt="Instagram"> Instagram
+        <a href="https://instagram.com/00brother" target="_blank" rel="noopener noreferrer">
+          <img src="instagram-icon.png" alt="" aria-hidden="true"> Instagram
         </a>
-        <a href="https://wa.me/5546999999999" target="_blank">
-          <img src="whatsapp-icon.png" alt="WhatsApp"> WhatsApp
+        <a href="https://wa.me/5546999999999" target="_blank" rel="noopener noreferrer">
+          <img src="whatsapp-icon.png" alt="" aria-hidden="true"> WhatsApp
         </a>
-      </div>
+      </nav>
     </div>
   </footer>
+
 </body>
 </html>
