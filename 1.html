@@ -12,19 +12,28 @@
     }
 
     body {
-      background-color: #ffffff; /* branco predominante (60%) */
       font-family: Arial, sans-serif;
-      color: #000000; /* preto (30%) */
+      color: #000000; /* preto */
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
+      background: url('fundo.jpg') no-repeat center center fixed; /* imagem de fundo */
+      background-size: cover;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.85); /* branco predominante com transparência */
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      max-width: 800px;
     }
 
     .logo {
-      max-width: 300px;
+      max-width: 280px;
       margin-bottom: 25px;
     }
 
@@ -38,13 +47,12 @@
       font-size: 1.2em;
       margin-bottom: 40px;
       color: #333333;
-      max-width: 600px;
     }
 
     .btn {
       padding: 14px 28px;
       font-size: 1.1em;
-      background-color: #89CFF0; /* azul bebê profissional (10%) */
+      background-color: #89CFF0; /* azul bebê */
       color: #000000;
       border: none;
       border-radius: 6px;
@@ -85,11 +93,12 @@
   </style>
 </head>
 <body>
-  <!-- Tela de boas-vindas -->
-  <img src="logo.jpeg" alt="Logo da empresa" class="logo">
-  <h1>Bem-vindo, Gestor</h1>
-  <p>00brother é uma empresa dedicada ao desenvolvimento de aplicativos e projetos voltados para o impacto social e a melhoria da sociedade.</p>
-  <button class="btn" onclick="window.location.href='principal.html'">Entrar no Painel</button>
+  <div class="overlay">
+    <img src="logo.jpeg" alt="Logo da empresa" class="logo">
+    <h1>Bem-vindo, Gestor</h1>
+    <p>00brother é uma empresa dedicada ao desenvolvimento de aplicativos e projetos voltados para o impacto social e a melhoria da sociedade.</p>
+    <button class="btn" onclick="window.location.href='principal.html'">Entrar no Painel</button>
+  </div>
 
   <footer>
     © 2026 00brother - Plataforma exclusiva para gestores
