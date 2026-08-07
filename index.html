@@ -2,10 +2,16 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Abertura</title>
+  <title>Abertura Responsiva</title>
   <style>
-    body {
+    /* Reset básico */
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       background-color: #000;
       display: flex;
       justify-content: center;
@@ -14,7 +20,15 @@
     }
 
     .splash img {
-      max-width: 400px;
+      max-width: 90%;
+      height: auto;
+    }
+
+    /* Responsividade extra */
+    @media (min-width: 768px) {
+      .splash img {
+        max-width: 400px;
+      }
     }
   </style>
   <script>
@@ -25,7 +39,7 @@
   </script>
 </head>
 <body>
-  <!-- Tela de abertura com a logo -->
+  <!-- Tela de abertura com a nova logo -->
   <div class="splash">
     <img src="logo.jpeg" alt="Logo de abertura">
   </div>
