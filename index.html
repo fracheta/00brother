@@ -12,7 +12,7 @@
     }
 
     body {
-      background-color: #000;
+      background-color: #fff; /* fundo branco */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,8 +20,23 @@
     }
 
     .splash img {
-      max-width: 90%;
+      max-width: 70%; /* tamanho inicial */
       height: auto;
+      opacity: 0;
+      transform: scale(1);
+      animation: fadeZoom 4s forwards;
+    }
+
+    /* Animação: aparece devagar e aumenta 20% */
+    @keyframes fadeZoom {
+      0% {
+        opacity: 0;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.2); /* aumenta 20% */
+      }
     }
 
     /* Responsividade extra */
