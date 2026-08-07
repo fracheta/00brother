@@ -12,7 +12,7 @@
     }
 
     body {
-      background-color: #f9f9f9; /* cor suave semelhante ao fundo da logo */
+      background-color: #ffffff; /* fundo igual ao da logo */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,7 +20,7 @@
     }
 
     .splash img {
-      max-width: 70%; /* tamanho inicial */
+      max-width: 85%; /* aumentei o tamanho inicial */
       height: auto;
       opacity: 0;
       transform: scale(1);
@@ -42,7 +42,7 @@
     /* Responsividade extra */
     @media (min-width: 768px) {
       .splash img {
-        max-width: 400px;
+        max-width: 480px; /* maior em telas grandes */
       }
     }
   </style>
@@ -54,7 +54,7 @@
   </script>
 </head>
 <body>
-  <!-- Tela de abertura com a nova logo -->
+  <!-- Tela de abertura com a logo -->
   <div class="splash">
     <img src="logo.jpeg" alt="Logo de abertura">
   </div>
