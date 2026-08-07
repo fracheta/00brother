@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="00brother - Desenvolvimento de aplicativos e projetos para impacto social. Tecnologia que transforma realidades.">
-    <title>00brother | Impacto Social</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="00brother - Desenvolvimento de aplicativos e projetos para impacto social e melhoria da sociedade." />
+    <title>00brother | Impacto Social & Tecnologia</title>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome para ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
-        /* ================= RESET E BASE ================= */
+        :root {
+            --primary: #0077b6;
+            --primary-light: #89CFF0;
+            --dark: #0a0a0a;
+            --text: #2d2d2d;
+            --bg-light: #f8fafc;
+            --card-bg: rgba(255,255,255,0.85);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.06);
+            --radius: 18px;
+            --transition: 0.3s cubic-bezier(0.25,0.8,0.25,1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -28,9 +40,10 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            color: #1a1a1a;
-            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg-light);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         a {
@@ -43,17 +56,18 @@
             display: block;
         }
 
-        /* ================= NAVEGAÇÃO FIXA ================= */
+        /* ========== NAVBAR VIDRO ========== */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            box-shadow: var(--shadow-sm);
         }
 
         .nav-container {
@@ -66,27 +80,21 @@
             height: 75px;
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-        }
-
         .nav-logo img {
-            height: 42px;
-            width: auto;
+            height: 45px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2.2rem;
             list-style: none;
         }
 
         .nav-links a {
             font-weight: 500;
             font-size: 0.95rem;
-            color: #2d2d2d;
-            transition: color 0.3s;
+            color: #1e293b;
+            transition: color var(--transition);
             position: relative;
         }
 
@@ -95,14 +103,14 @@
             position: absolute;
             bottom: -6px;
             left: 0;
-            width: 0%;
+            width: 0;
             height: 2px;
-            background-color: #0077b6;
-            transition: width 0.3s;
+            background: var(--primary);
+            transition: width var(--transition);
         }
 
         .nav-links a:hover {
-            color: #0077b6;
+            color: var(--primary);
         }
 
         .nav-links a:hover::after {
@@ -113,86 +121,87 @@
             display: none;
             font-size: 1.8rem;
             cursor: pointer;
-            color: #2d2d2d;
+            color: #1e293b;
         }
 
-        /* ================= HERO COM IMAGEM DE FUNDO ================= */
+        /* ========== HERO COM IMAGEM CLARA ========== */
         .hero {
             position: relative;
             height: 100vh;
-            min-height: 650px;
+            min-height: 700px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop') 
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop') 
                         no-repeat center center/cover;
-            margin-bottom: 0;
+            background-attachment: fixed; /* parallax sutil */
         }
 
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.65);
-            backdrop-filter: blur(3px);
+            inset: 0;
+            background: rgba(255, 255, 255, 0.65); /* overlay claro */
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            text-align: center;
             max-width: 800px;
+            text-align: center;
             padding: 0 20px;
-            animation: fadeInUp 0.8s ease-out;
+            animation: fadeInUp 0.8s ease;
         }
 
         .hero-logo {
-            width: 230px;
+            width: 250px;
             margin: 0 auto 30px;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 1rem;
+            color: #0f172a;
+            margin-bottom: 20px;
             letter-spacing: -1px;
         }
 
-        .hero h1 span {
-            color: #89CFF0;
+        .hero h1 .highlight {
+            color: var(--primary);
         }
 
         .hero p {
-            font-size: 1.3rem;
-            color: #e0e0e0;
-            margin-bottom: 2.5rem;
-            line-height: 1.5;
+            font-size: 1.25rem;
+            color: #334155;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
 
-        .btn-primary {
+        .btn {
             display: inline-block;
-            padding: 16px 42px;
-            background: linear-gradient(135deg, #89CFF0, #5fa8d4);
-            color: #0a0a0a;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: #fff;
             font-weight: 600;
-            font-size: 1.05rem;
             border-radius: 50px;
-            transition: all 0.3s;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
             border: none;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,119,182,0.3);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 20px rgba(0,119,182,0.3);
         }
 
-        .btn-primary:hover {
+        .btn:hover {
+            background: #005f8c;
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0,119,182,0.45);
-            background: linear-gradient(135deg, #a0d8f2, #6fbbe0);
+            box-shadow: 0 14px 28px rgba(0,119,182,0.4);
         }
 
         @keyframes fadeInUp {
@@ -200,16 +209,15 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ================= SEÇÃO SOBRE ================= */
-        .about {
-            padding: 100px 0;
-            background: #ffffff;
-        }
-
+        /* ========== SEÇÕES GERAIS ========== */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 25px;
+        }
+
+        .section {
+            padding: 100px 0;
         }
 
         .section-title {
@@ -218,25 +226,30 @@
         }
 
         .section-title h2 {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
+            color: #0f172a;
+            margin-bottom: 10px;
         }
 
         .section-title .underline {
             width: 70px;
             height: 4px;
-            background: #89CFF0;
+            background: var(--primary-light);
             margin: 0.8rem auto;
             border-radius: 2px;
         }
 
         .section-title p {
-            color: #666;
             font-size: 1.1rem;
+            color: #64748b;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        /* ========== SOBRE ========== */
+        .about {
+            background: #ffffff;
         }
 
         .about-grid {
@@ -248,155 +261,251 @@
 
         .about-text h3 {
             font-size: 1.8rem;
-            margin-bottom: 1.2rem;
-            color: #0077b6;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
         }
 
         .about-text p {
-            color: #444;
+            color: #475569;
             margin-bottom: 1.2rem;
         }
 
         .about-stats {
             display: flex;
             gap: 2rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .stat {
             text-align: center;
+            background: var(--bg-light);
+            padding: 20px 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            color: #0077b6;
+            color: var(--primary);
         }
 
         .stat-label {
-            font-size: 0.95rem;
-            color: #777;
+            font-size: 0.9rem;
+            color: #64748b;
         }
 
         .about-image {
-            border-radius: 20px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-md);
         }
 
         .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* ================= SERVIÇOS ================= */
+        /* ========== SERVIÇOS ========== */
         .services {
-            padding: 100px 0;
-            background: #f9fbfd;
+            background: #f8fafc;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .service-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: white;
+            border-radius: var(--radius);
+            padding: 45px 30px;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
             text-align: center;
-            border: 1px solid #f0f0f0;
+            border: 1px solid #e9eef2;
         }
 
         .service-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,119,182,0.08);
+            box-shadow: 0 20px 40px rgba(0,119,182,0.1);
         }
 
         .service-icon {
             font-size: 2.8rem;
-            color: #0077b6;
-            margin-bottom: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.8rem;
         }
 
         .service-card h3 {
             font-size: 1.4rem;
             margin-bottom: 1rem;
-            color: #1a1a1a;
+            color: #0f172a;
         }
 
         .service-card p {
-            color: #666;
+            color: #475569;
             font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        /* ================= IMPACTO ================= */
+        /* ========== PORTFOLIO / CASES ========== */
+        .portfolio {
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            background: white;
+            transition: transform var(--transition);
+        }
+
+        .portfolio-card:hover {
+            transform: scale(1.02);
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .portfolio-info p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* ========== IMPACTO (contadores) ========== */
         .impact {
-            padding: 100px 0;
-            background: #ffffff;
+            background: linear-gradient(105deg, #eef7fd 0%, #f4f9fc 100%);
         }
 
         .impact-banner {
-            background: linear-gradient(105deg, #eef7fd 0%, #f4f9fc 100%);
-            border-radius: 24px;
-            padding: 50px 40px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
             align-items: center;
-            box-shadow: 0 10px 30px rgba(0,119,182,0.05);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: var(--radius);
+            padding: 60px 20px;
+            box-shadow: var(--shadow-md);
         }
 
         .impact-item {
             text-align: center;
             padding: 20px;
+            min-width: 160px;
         }
 
         .impact-item i {
             font-size: 2.5rem;
-            color: #0077b6;
-            margin-bottom: 10px;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
 
         .impact-item .big-number {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: #0a0a0a;
+            color: #0f172a;
         }
 
         .impact-item .desc {
-            color: #555;
-            font-size: 1rem;
+            color: #475569;
         }
 
-        /* ================= CONTATO ================= */
+        /* ========== EQUIPE ========== */
+        .team {
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-6px);
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid var(--primary-light);
+        }
+
+        .team-member h4 {
+            font-size: 1.1rem;
+            color: #0f172a;
+        }
+
+        .team-member span {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* ========== CONTATO ========== */
         .contact {
-            padding: 100px 0;
-            background: #f9fbfd;
+            background: #f8fafc;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
         }
 
         .contact-form {
-            max-width: 650px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 50px 40px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
             font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: #333;
+            margin-bottom: 8px;
+            color: #334155;
         }
 
         .form-group input,
@@ -407,84 +516,155 @@
             border-radius: 10px;
             font-family: inherit;
             font-size: 1rem;
-            transition: border 0.3s;
-            background: #fafafa;
+            transition: border var(--transition), box-shadow var(--transition);
+            background: #fafbfc;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #89CFF0;
-            box-shadow: 0 0 0 3px rgba(137,207,240,0.15);
-            background: #fff;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(137,207,240,0.2);
         }
 
         .btn-submit {
-            background: #0077b6;
-            color: #fff;
+            background: var(--primary);
+            color: white;
             border: none;
-            padding: 15px 35px;
+            padding: 15px 30px;
             font-weight: 600;
             font-size: 1rem;
             border-radius: 50px;
             cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-            display: inline-block;
+            transition: background var(--transition);
             width: 100%;
         }
 
         .btn-submit:hover {
             background: #005f8c;
-            transform: translateY(-2px);
         }
 
-        /* ================= FOOTER ================= */
-        .footer {
-            background: #0a0a0a;
-            color: #ccc;
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .footer .container {
+        .contact-info {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 25px;
+        }
+
+        .contact-info .info-item {
+            display: flex;
             gap: 15px;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
         }
 
-        .footer-logo {
-            width: 150px;
-            filter: brightness(0) invert(1);
+        .info-item i {
+            font-size: 1.6rem;
+            color: var(--primary);
         }
 
-        .social-icons a {
-            color: #ccc;
-            margin: 0 12px;
-            font-size: 1.3rem;
-            transition: color 0.3s;
+        /* ========== NEWSLETTER ========== */
+        .newsletter {
+            background: var(--primary);
+            padding: 60px 0;
+            text-align: center;
+            color: white;
         }
 
-        .social-icons a:hover {
-            color: #89CFF0;
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
         }
 
-        .footer p {
+        .newsletter p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 50px;
+            width: 300px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--dark);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: #1e293b;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--dark);
+            color: #cbd5e1;
+            padding: 40px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h5 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            transition: color var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            padding-top: 20px;
             font-size: 0.9rem;
         }
 
-        .footer p span {
-            color: #89CFF0;
+        .social-icons a {
+            color: #94a3b8;
+            margin: 0 12px;
+            font-size: 1.3rem;
+            transition: color var(--transition);
         }
 
-        /* ================= RESPONSIVO ================= */
+        .social-icons a:hover {
+            color: var(--primary-light);
+        }
+
+        /* ========== RESPONSIVO ========== */
         @media (max-width: 900px) {
-            .about-grid {
+            .about-grid, .contact-wrapper {
                 grid-template-columns: 1fr;
             }
             .about-image {
@@ -493,7 +673,7 @@
                 margin: 0 auto;
             }
             .hero h1 {
-                font-size: 2.4rem;
+                font-size: 2.5rem;
             }
             .hero p {
                 font-size: 1.1rem;
@@ -504,10 +684,11 @@
                 top: 75px;
                 left: 0;
                 width: 100%;
-                background: white;
+                background: rgba(255,255,255,0.95);
+                backdrop-filter: blur(12px);
                 flex-direction: column;
                 padding: 20px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                box-shadow: var(--shadow-md);
             }
             .nav-links.active {
                 display: flex;
@@ -515,42 +696,37 @@
             .menu-toggle {
                 display: block;
             }
-            .impact-banner {
-                flex-direction: column;
-                gap: 30px;
-            }
         }
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 1.9rem;
-            }
-            .btn-primary {
-                padding: 14px 30px;
-            }
-            .stat-number {
                 font-size: 2rem;
             }
             .about-stats {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 15px;
+            }
+            .newsletter-form input {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ================= NAVEGAÇÃO ================= -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
-                <img src="logo2.img" alt="00brother">
+                <img src="logo2.img" alt="00brother logo" />
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#portfolio">Cases</a></li>
                 <li><a href="#impacto">Impacto</a></li>
+                <li><a href="#equipe">Equipe</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
@@ -559,91 +735,128 @@
         </div>
     </nav>
 
-    <!-- ================= HERO ================= -->
+    <!-- Hero com imagem clara -->
     <section class="hero" id="home">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <img src="logo2.img" alt="00brother logo" class="hero-logo">
-            <h1>Bem-vindo, <span>Gestor</span></h1>
-            <p>Tecnologia com propósito: aplicativos e projetos que geram <strong>impacto social</strong> e transformam realidades.</p>
-            <a href="principal.html" class="btn-primary">Entrar no Painel</a>
+            <img src="logo2.img" alt="00brother" class="hero-logo" />
+            <h1>Bem-vindo, <span class="highlight">Gestor</span></h1>
+            <p>
+                Transformamos realidades através de <strong>aplicativos e projetos digitais</strong> de impacto social.
+                Inovação com propósito.
+            </p>
+            <a href="principal.html" class="btn">Entrar no Painel</a>
         </div>
     </section>
 
-    <!-- ================= SOBRE ================= -->
-    <section class="about" id="sobre">
+    <!-- Sobre -->
+    <section class="section about" id="sobre">
         <div class="container">
             <div class="section-title">
                 <h2>Quem somos</h2>
                 <div class="underline"></div>
-                <p>Somos uma empresa movida pela inovação social e pela crença de que a tecnologia pode acelerar mudanças positivas.</p>
+                <p>Uma visão geral da nossa empresa e do nosso compromisso.</p>
             </div>
             <div class="about-grid">
                 <div class="about-text">
-                    <h3>00brother: código aberto para o futuro</h3>
+                    <h3>00brother: tecnologia cidadã</h3>
                     <p>
-                        Desenvolvemos soluções digitais sob medida para ONGs, governos e iniciativas comunitárias. Cada projeto nasce de um profundo entendimento das necessidades sociais, aliado a padrões técnicos de excelência.
+                        A 00brother nasceu para usar a tecnologia como ferramenta de transformação social. Desenvolvemos soluções sob medida para ONGs, governos e iniciativas comunitárias, sempre com foco em impacto e sustentabilidade.
                     </p>
                     <p>
-                        Nossa equipe multidisciplinar combina desenvolvedores, designers e especialistas em políticas públicas – todos comprometidos com um único objetivo: criar ferramentas que ampliem o alcance de causas importantes.
+                        Cada projeto é guiado por escuta ativa das comunidades e métricas claras de resultado. Acreditamos que o digital pode ser uma ponte para reduzir desigualdades.
                     </p>
                     <div class="about-stats">
                         <div class="stat">
-                            <div class="stat-number">+40</div>
-                            <div class="stat-label">Projetos entregues</div>
+                            <div class="stat-number">+50</div>
+                            <div class="stat-label">Projetos</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">12</div>
-                            <div class="stat-label">Estados impactados</div>
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Estados</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">150k</div>
-                            <div class="stat-label">Pessoas alcançadas</div>
+                            <div class="stat-number">200k</div>
+                            <div class="stat-label">Pessoas impactadas</div>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop" alt="Equipe colaborando">
+                    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=1974&auto=format&fit=crop" alt="Equipe 00brother colaborando">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= SERVIÇOS ================= -->
-    <section class="services" id="servicos">
+    <!-- Serviços -->
+    <section class="section services" id="servicos">
         <div class="container">
             <div class="section-title">
-                <h2>Nossos serviços</h2>
+                <h2>Serviços</h2>
                 <div class="underline"></div>
-                <p>Do conceito à implementação, oferecemos soluções completas.</p>
+                <p>O que oferecemos para impulsionar a transformação social.</p>
             </div>
             <div class="cards-grid">
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>Apps de Impacto</h3>
-                    <p>Criação de aplicativos móveis focados em educação, saúde, cidadania e inclusão digital.</p>
+                    <h3>Apps de impacto</h3>
+                    <p>Criação de aplicativos iOS e Android para causas sociais, com foco em acessibilidade e experiência do usuário.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Plataformas Web</h3>
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Plataformas web</h3>
                     <p>Sistemas de gestão, portais de transparência e dashboards para monitoramento de indicadores sociais.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-users"></i></div>
-                    <h3>Consultoria Social</h3>
-                    <p>Avaliação de maturidade digital e desenho de estratégias tecnológicas para organizações do terceiro setor.</p>
+                    <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Análise de dados</h3>
+                    <p>Transformamos dados públicos em insights acionáveis para políticas públicas e projetos do terceiro setor.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= IMPACTO ================= -->
-    <section class="impact" id="impacto">
+    <!-- Portfolio / Cases -->
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cases recentes</h2>
+                <div class="underline"></div>
+                <p>Alguns dos projetos que nos enchem de orgulho.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop" alt="App Conecta">
+                    <div class="portfolio-info">
+                        <h4>Conecta Jovem</h4>
+                        <p>App que conecta jovens de periferias a oportunidades de capacitação e emprego.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Dashboard Saúde">
+                    <div class="portfolio-info">
+                        <h4>Saúde + Perto</h4>
+                        <p>Plataforma de telemedicina para comunidades ribeirinhas da Amazônia.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" alt="Educação">
+                    <div class="portfolio-info">
+                        <h4>Educa Digital</h4>
+                        <p>Portal de alfabetização digital para escolas públicas de ensino fundamental.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impacto -->
+    <section class="section impact" id="impacto">
         <div class="container">
             <div class="section-title">
                 <h2>Nosso impacto</h2>
                 <div class="underline"></div>
-                <p>Resultados que falam por si.</p>
+                <p>Números que refletem nosso propósito.</p>
             </div>
             <div class="impact-banner">
                 <div class="impact-item">
@@ -653,71 +866,144 @@
                 </div>
                 <div class="impact-item">
                     <i class="fas fa-laptop-code"></i>
-                    <div class="big-number">8</div>
-                    <div class="desc">Tecnologias open-source</div>
+                    <div class="big-number">12</div>
+                    <div class="desc">Soluções open-source</div>
                 </div>
                 <div class="impact-item">
                     <i class="fas fa-award"></i>
-                    <div class="big-number">3</div>
-                    <div class="desc">Prêmios de inovação social</div>
+                    <div class="big-number">5</div>
+                    <div class="desc">Prêmios de inovação</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= CONTATO ================= -->
-    <section class="contact" id="contato">
+    <!-- Equipe -->
+    <section class="section team" id="equipe">
         <div class="container">
             <div class="section-title">
-                <h2>Fale conosco</h2>
+                <h2>Nossa equipe</h2>
                 <div class="underline"></div>
-                <p>Quer impulsionar uma causa? Vamos conversar.</p>
+                <p>Pessoas que fazem acontecer.</p>
             </div>
-            <form class="contact-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos">
+                    <h4>Carlos Mendes</h4>
+                    <span>CEO & Fundador</span>
                 </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" placeholder="email@exemplo.com" required>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Marina">
+                    <h4>Marina Silva</h4>
+                    <span>Diretora de Projetos</span>
                 </div>
-                <div class="form-group">
-                    <label for="mensagem">Mensagem</label>
-                    <textarea id="mensagem" name="mensagem" placeholder="Conte-nos sobre seu projeto social..." required></textarea>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Rafael">
+                    <h4>Rafael Oliveira</h4>
+                    <span>Lead Developer</span>
                 </div>
-                <button type="submit" class="btn-submit">Enviar mensagem</button>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Julia">
+                    <h4>Júlia Costa</h4>
+                    <span>UX/UI Designer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Receba novidades</h2>
+            <p>Inscreva-se para acompanhar nossos projetos de impacto e oportunidades de parceria.</p>
+            <form class="newsletter-form" action="#">
+                <input type="email" placeholder="seu@email.com" required>
+                <button type="submit">Inscrever</button>
             </form>
         </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- Contato -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fale conosco</h2>
+                <div class="underline"></div>
+                <p>Quer levar transformação digital para sua causa? Entre em contato.</p>
+            </div>
+            <div class="contact-wrapper">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="email@exemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="msg">Mensagem</label>
+                        <textarea id="msg" rows="5" placeholder="Descreva seu projeto ou ideia..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar mensagem</button>
+                </form>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div><strong>Endereço</strong><br>São Paulo, SP - Brasil</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><strong>E-mail</strong><br>contato@00brother.com.br</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div><strong>Telefone</strong><br>(11) 99999-0000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <img src="logo2.img" alt="00brother" class="footer-logo">
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>00brother</h5>
+                    <p style="color:#94a3b8;">Tecnologia e propósito lado a lado.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Links rápidos</h5>
+                    <a href="#home">Início</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#contato">Contato</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Redes sociais</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
             </div>
-            <p>© 2026 <span>00brother</span> — Tecnologia que transforma a sociedade.</p>
+            <div class="footer-bottom">
+                <p>© 2026 <strong style="color:white;">00brother</strong> – Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- ================= SCRIPT MENU MOBILE ================= -->
+    <!-- Script menu mobile -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-
-        // Fecha menu ao clicar em link (mobile)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
     </script>
 
