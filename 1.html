@@ -5,7 +5,11 @@
   <title>00brother - Boas-Vindas</title>
   <style>
     /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: Arial, sans-serif;
@@ -13,6 +17,9 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
       background: url('fundo-profissional.jpg') no-repeat center center fixed;
       background-size: cover;
     }
@@ -20,47 +27,24 @@
     header {
       width: 100%;
       padding: 20px;
-      background-color: rgba(255,255,255,0.95);
+      background-color: rgba(255,255,255,0.9);
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      position: fixed;
-      top: 0;
-      z-index: 1000;
     }
 
     .logo {
-      max-width: 200px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #000000;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #89CFF0;
+      max-width: 300px;
     }
 
     .overlay {
-      margin-top: 120px;
       background-color: rgba(255, 255, 255, 0.9);
       padding: 40px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
+      margin-top: 40px;
       animation: fadeIn 2s ease-in-out;
     }
 
@@ -69,8 +53,17 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    h1 { font-size: 2.5em; margin-bottom: 15px; }
-    p { font-size: 1.2em; margin-bottom: 40px; color: #333333; }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: #000000;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #333333;
+    }
 
     .btn {
       padding: 14px 28px;
@@ -83,10 +76,40 @@
       transition: all 0.3s ease;
     }
 
-    .btn:hover { background-color: #6bbbe0; transform: scale(1.05); }
+    .btn:hover {
+      background-color: #6bbbe0;
+      transform: scale(1.05);
+    }
 
-    /* Cards */
-    .cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; }
+    section {
+      width: 100%;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.85);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #000000;
+    }
+
+    section p {
+      font-size: 1.1em;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
     .card {
       background-color: #ffffff;
       border-radius: 10px;
@@ -95,41 +118,21 @@
       width: 280px;
       transition: transform 0.3s ease;
     }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { font-size: 1.4em; margin-bottom: 10px; }
-    .card p { font-size: 1em; color: #555555; }
 
-    /* Timeline */
-    .timeline { position: relative; margin: 50px auto; padding: 20px; max-width: 800px; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: #89CFF0;
-      transform: translateX(-50%);
+    .card:hover {
+      transform: translateY(-5px);
     }
-    .timeline-item {
-      position: relative;
-      width: 50%;
-      padding: 20px;
+
+    .card h3 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      color: #000000;
     }
-    .timeline-item.left { left: 0; text-align: right; }
-    .timeline-item.right { left: 50%; text-align: left; }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #000000;
-      border: 3px solid #89CFF0;
+
+    .card p {
+      font-size: 1em;
+      color: #555555;
     }
-    .timeline-item.left::before { right: -10px; }
-    .timeline-item.right::before { left: -10px; }
 
     footer {
       width: 100%;
@@ -140,20 +143,26 @@
       font-size: 0.9em;
       margin-top: auto;
     }
+
+    @media (min-width: 768px) {
+      .logo {
+        max-width: 450px;
+      }
+      h1 {
+        font-size: 3em;
+      }
+      p {
+        font-size: 1.4em;
+      }
+      .btn {
+        font-size: 1.2em;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <img src="logo2.img" alt="Logo da empresa" class="logo">
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Projetos</a></li>
-        <li><a href="#">Impacto</a></li>
-        <li><a href="#">Relatórios</a></li>
-        <li><a href="#">Configurações</a></li>
-      </ul>
-    </nav>
   </header>
 
   <div class="overlay">
@@ -163,35 +172,32 @@
   </div>
 
   <!-- Seções adicionais -->
-  <section class="cards">
-    <div class="card">
-      <h3>Missão</h3>
-      <p>Promover inovação tecnológica com impacto social positivo.</p>
-    </div>
-    <div class="card">
-      <h3>Valores</h3>
-      <p>Ética, responsabilidade e inovação em cada projeto.</p>
-    </div>
-    <div class="card">
-      <h3>Impacto</h3>
-      <p>Milhares de pessoas beneficiadas por nossas soluções.</p>
+  <section>
+    <h2>Missão</h2>
+    <p>Promover inovação tecnológica com impacto social positivo, desenvolvendo aplicativos que transformam comunidades e fortalecem a sociedade.</p>
+  </section>
+
+  <section>
+    <h2>Valores</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Inovação</h3>
+        <p>Buscamos constantemente novas soluções para desafios sociais e corporativos.</p>
+      </div>
+      <div class="card">
+        <h3>Responsabilidade</h3>
+        <p>Agimos com ética e compromisso em todos os projetos.</p>
+      </div>
+      <div class="card">
+        <h3>Impacto</h3>
+        <p>Nosso foco é gerar resultados que beneficiem a sociedade.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Timeline -->
-  <section class="timeline">
-    <div class="timeline-item left">
-      <h3>2024</h3>
-      <p>Lançamento do primeiro aplicativo social.</p>
-    </div>
-    <div class="timeline-item right">
-      <h3>2025</h3>
-      <p>Expansão para projetos educacionais.</p>
-    </div>
-    <div class="timeline-item left">
-      <h3>2026</h3>
-      <p>Plataforma exclusiva para gestores.</p>
-    </div>
+  <section>
+    <h2>Impacto Social</h2>
+    <p>Projetos da 00brother já beneficiaram milhares de pessoas, promovendo inclusão digital, educação e oportunidades de crescimento.</p>
   </section>
 
   <footer>
