@@ -20,7 +20,7 @@
     header {
       width: 100%;
       padding: 40px 20px;
-      background: url('fundo-logo.jpg') no-repeat center center;
+      background: url('fundo-logo.jpg') no-repeat center center; /* imagem atrás da logo */
       background-size: cover;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       display: flex;
@@ -29,7 +29,7 @@
     }
 
     .logo {
-      max-width: 300px;
+      max-width: 390px; /* aumentada em 30% (antes 300px) */
       filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
     }
 
@@ -41,7 +41,6 @@
       padding: 40px;
     }
 
-    /* Meio círculo azul bebê */
     .left-circle {
       width: 300px;
       height: 600px;
@@ -62,7 +61,6 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
-    /* Texto de boas-vindas à direita */
     .overlay {
       background-color: rgba(255, 255, 255, 0.92);
       padding: 50px;
@@ -137,6 +135,15 @@
       width: 20px;
       height: 20px;
     }
+
+    @media (min-width: 768px) {
+      .logo {
+        max-width: 585px; /* aumentada em 30% (antes 450px) */
+      }
+      h1 { font-size: 3.2em; }
+      p { font-size: 1.6em; }
+      .btn { font-size: 1.3em; }
+    }
   </style>
 </head>
 <body>
@@ -145,12 +152,10 @@
   </header>
 
   <div class="main">
-    <!-- Lado esquerdo com meio círculo e imagem -->
     <div class="left-circle">
       <img src="imagem-esquerda.jpg" alt="Imagem destaque">
     </div>
 
-    <!-- Lado direito com boas-vindas -->
     <div class="overlay">
       <h1>✨ Bem-vindo, Gestor ✨</h1>
       <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, dedicada ao desenvolvimento de aplicativos e projetos com impacto social e inovação.</p>
