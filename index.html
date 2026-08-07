@@ -2,95 +2,32 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Tela de Boas-Vindas</title>
+  <title>Abertura</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      background-color: #000;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
 
-    /* Tela de abertura */
-    .splash {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: fadeOut 3s forwards;
-      animation-delay: 2s;
-    }
-
     .splash img {
       max-width: 400px;
     }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    /* Tela de boas-vindas */
-    .welcome {
-      text-align: center;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-      animation-delay: 4s;
-    }
-
-    .welcome img {
-      max-width: 250px;
-      margin-bottom: 20px;
-    }
-
-    .welcome h1 {
-      font-size: 2em;
-      color: #333;
-    }
-
-    .welcome p {
-      font-size: 1.2em;
-      color: #666;
-    }
-
-    .welcome button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1em;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .welcome button:hover {
-      background-color: #0056b3;
-    }
   </style>
+  <script>
+    // Redireciona para 1.html após 5 segundos
+    setTimeout(function() {
+      window.location.href = "1.html";
+    }, 5000);
+  </script>
 </head>
 <body>
-  <!-- Tela de abertura com a imagem enviada -->
+  <!-- Tela de abertura com a logo -->
   <div class="splash">
-    <img src="logo.jpeg" alt="Imagem de abertura">
-  </div>
-
-  <!-- Tela de boas-vindas -->
-  <div class="welcome">
-    <img src="logo.jpeg" alt="Logo da empresa">
-    <h1>Bem-vindo ao Grupo Brother</h1>
-    <p>Desenvolvimento de Apps | Impacto Social</p>
-    <button onclick="window.location.href='principal.html'">Entrar</button>
+    <img src="logo.jpeg" alt="Logo de abertura">
   </div>
 </body>
 </html>
