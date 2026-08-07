@@ -1,196 +1,207 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="00brother - Desenvolvimento de aplicativos e projetos para impacto social e melhoria da sociedade.">
-    <title>00brother | Impacto Social</title>
+  <meta charset="UTF-8">
+  <title>00brother - Boas-Vindas</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    body {
+      font-family: Arial, sans-serif;
+      color: #000000;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      background: url('fundo-profissional.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    header {
+      width: 100%;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.9);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            /* Imagem de fundo profissional (tecnologia, conexão, impacto social) */
-            background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop') 
-                        no-repeat center center fixed;
-            background-size: cover;
-            position: relative;
-        }
+    .logo {
+      max-width: 300px;
+    }
 
-        /* Camada escura sobre a imagem para melhor contraste */
-        .bg-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            z-index: 0;
-        }
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      max-width: 900px;
+      margin-top: 40px;
+      animation: fadeIn 2s ease-in-out;
+    }
 
-        /* Container principal alinhado ao centro */
-        .main-wrapper {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            padding: 20px;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        /* Cartão com fundo branco sólido e sombra suave */
-        .card {
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            padding: 50px 40px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out;
-        }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: #000000;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #333333;
+    }
 
-        .logo {
-            max-width: 220px;
-            height: auto;
-            margin-bottom: 30px;
-            /* Caso a logo precise de destaque sobre fundo branco */
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
-        }
+    .btn {
+      padding: 14px 28px;
+      font-size: 1.1em;
+      background-color: #89CFF0;
+      color: #000000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-        h1 {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
+    .btn:hover {
+      background-color: #6bbbe0;
+      transform: scale(1.05);
+    }
 
-        .highlight {
-            color: #0077b6;
-        }
+    section {
+      width: 100%;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.85);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
 
-        p {
-            font-size: 1.1em;
-            color: #4a4a4a;
-            line-height: 1.7;
-            margin-bottom: 35px;
-            font-weight: 400;
-        }
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #000000;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.05em;
-            font-weight: 600;
-            background: linear-gradient(135deg, #89CFF0 0%, #5fa8d4 100%);
-            color: #0a0a0a;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 8px 20px rgba(0, 119, 182, 0.25);
-            letter-spacing: 0.3px;
-        }
+    section p {
+      font-size: 1.1em;
+      color: #333333;
+      margin-bottom: 20px;
+    }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(0, 119, 182, 0.4);
-            background: linear-gradient(135deg, #a0d8f2 0%, #6fbbe0 100%);
-        }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
 
-        .btn:active {
-            transform: translateY(0);
-            box-shadow: 0 6px 15px rgba(0, 119, 182, 0.3);
-        }
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
 
-        footer {
-            width: 100%;
-            background-color: #0a0a0a;
-            color: #cccccc;
-            text-align: center;
-            padding: 14px;
-            font-size: 0.85em;
-            font-weight: 400;
-            z-index: 1;
-            letter-spacing: 0.2px;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-        footer span {
-            color: #89CFF0;
-        }
+    .card h3 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      color: #000000;
+    }
 
-        /* Responsividade */
-        @media (max-width: 600px) {
-            .card {
-                padding: 35px 25px;
-                border-radius: 16px;
-            }
-            h1 {
-                font-size: 1.8em;
-            }
-            p {
-                font-size: 1em;
-                margin-bottom: 28px;
-            }
-            .btn {
-                padding: 14px 30px;
-                font-size: 1em;
-            }
-            .logo {
-                max-width: 170px;
-            }
-        }
-    </style>
+    .card p {
+      font-size: 1em;
+      color: #555555;
+    }
+
+    footer {
+      width: 100%;
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.9em;
+      margin-top: auto;
+    }
+
+    @media (min-width: 768px) {
+      .logo {
+        max-width: 450px;
+      }
+      h1 {
+        font-size: 3em;
+      }
+      p {
+        font-size: 1.4em;
+      }
+      .btn {
+        font-size: 1.2em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Sobreposição escura para destacar o cartão -->
-    <div class="bg-overlay"></div>
+  <header>
+    <img src="logo2.img" alt="Logo da empresa" class="logo">
+  </header>
 
-    <!-- Conteúdo centralizado -->
-    <div class="main-wrapper">
-        <div class="card">
-            <!-- Substitua pelo caminho real da sua logo (ex: images/logo.png) -->
-            <img src="logo2.img" alt="00brother - Tecnologia para impacto social" class="logo">
+  <div class="overlay">
+    <h1>Bem-vindo, Gestor</h1>
+    <p>00brother é uma empresa dedicada ao desenvolvimento de aplicativos e projetos voltados para o impacto social e a melhoria da sociedade.</p>
+    <button class="btn" onclick="window.location.href='principal.html'">Entrar no Painel</button>
+  </div>
 
-            <h1>Bem-vindo, <span class="highlight">Gestor</span></h1>
-            <p>
-                A <strong>00brother</strong> desenvolve aplicativos e projetos que geram <strong>impacto social real</strong>, 
-                unindo tecnologia e propósito para construir uma sociedade melhor.
-            </p>
+  <!-- Seções adicionais -->
+  <section>
+    <h2>Missão</h2>
+    <p>Promover inovação tecnológica com impacto social positivo, desenvolvendo aplicativos que transformam comunidades e fortalecem a sociedade.</p>
+  </section>
 
-            <button class="btn" onclick="window.location.href='principal.html'" aria-label="Entrar no painel de gestão">
-                Entrar no Painel
-            </button>
-        </div>
+  <section>
+    <h2>Valores</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Inovação</h3>
+        <p>Buscamos constantemente novas soluções para desafios sociais e corporativos.</p>
+      </div>
+      <div class="card">
+        <h3>Responsabilidade</h3>
+        <p>Agimos com ética e compromisso em todos os projetos.</p>
+      </div>
+      <div class="card">
+        <h3>Impacto</h3>
+        <p>Nosso foco é gerar resultados que beneficiem a sociedade.</p>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        © 2026 <span>00brother</span> — Plataforma exclusiva para gestores de impacto
-    </footer>
+  <section>
+    <h2>Impacto Social</h2>
+    <p>Projetos da 00brother já beneficiaram milhares de pessoas, promovendo inclusão digital, educação e oportunidades de crescimento.</p>
+  </section>
+
+  <footer>
+    © 2026 00brother - Plataforma exclusiva para gestores
+  </footer>
 </body>
 </html>
