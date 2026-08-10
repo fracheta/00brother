@@ -49,6 +49,7 @@
             flex-shrink: 0;
             box-shadow: 2px 0 15px rgba(0,0,0,0.2);
             transition: width var(--transicao);
+            z-index: 10;
         }
 
         .sidebar .logo-area {
@@ -143,141 +144,169 @@
         /* ========== CONTEÚDO PRINCIPAL ========== */
         .main-content {
             flex: 1;
-            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
             overflow-y: auto;
         }
 
-        .top-header {
+        /* Banner carrossel */
+        .banner-carousel {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .banner-carousel .slides {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
         }
 
-        .top-header h1 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--azul-corporativo);
-        }
-
-        .top-header .date {
-            font-size: 0.9rem;
-            color: var(--cinza-texto);
-            background: #fff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            box-shadow: var(--sombra-suave);
-        }
-
-        /* Cards de resumo */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .card-resumo {
-            background: #fff;
-            border-radius: var(--borda);
-            padding: 1.5rem;
-            box-shadow: var(--sombra-suave);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: transform var(--transicao), box-shadow var(--transicao);
-            border-left: 4px solid transparent;
-        }
-
-        .card-resumo:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--sombra-media);
-        }
-
-        .card-resumo .icon-box {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: rgba(201, 168, 76, 0.1);
+        .banner-carousel .slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: var(--dourado);
-        }
-
-        .card-resumo .info h3 {
-            font-size: 0.9rem;
-            color: var(--cinza-texto);
-            font-weight: 500;
-        }
-
-        .card-resumo .info .numero {
-            font-size: 1.8rem;
+            color: white;
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--azul-corporativo);
-            line-height: 1.2;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            position: relative;
         }
 
-        .card-resumo:nth-child(1) { border-left-color: #4caf50; }
-        .card-resumo:nth-child(2) { border-left-color: #2196f3; }
-        .card-resumo:nth-child(3) { border-left-color: #ff9800; }
-        .card-resumo:nth-child(4) { border-left-color: #9c27b0; }
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(26,42,58,0.6) 0%, rgba(26,42,58,0.2) 100%);
+            z-index: 1;
+        }
 
-        /* Tabela de projetos */
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .banner-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .banner-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .banner-dots .dot.active {
+            background: var(--dourado);
+            border-color: var(--dourado);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
+
+        /* Área abaixo do banner */
+        .content-area {
+            padding: 2rem 2.5rem;
+        }
+
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--azul-corporativo);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
-        .table-wrapper {
-            background: #fff;
-            border-radius: var(--borda);
+        /* Botões numerados (6-15) */
+        .number-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .num-btn {
+            background: var(--branco);
+            border: 2px solid var(--dourado);
+            color: var(--azul-corporativo);
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 0.8rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            transition: all var(--transicao);
             box-shadow: var(--sombra-suave);
-            overflow-x: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
+        .num-btn:hover {
+            background: var(--dourado);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--sombra-media);
         }
 
-        th, td {
-            padding: 14px 20px;
-            text-align: left;
+        /* Cards de trabalhador */
+        .worker-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .worker-card {
+            background: var(--branco);
+            border-radius: var(--borda);
+            padding: 1.5rem;
+            box-shadow: var(--sombra-suave);
+            transition: transform var(--transicao), box-shadow var(--transicao);
+            text-align: center;
+        }
+
+        .worker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .worker-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--dourado);
+        }
+
+        .worker-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--azul-corporativo);
+            margin-bottom: 0.3rem;
+        }
+
+        .worker-card p {
             font-size: 0.9rem;
-        }
-
-        th {
-            background: #f8f9fa;
-            font-weight: 600;
-            color: var(--azul-medio);
-            border-bottom: 2px solid #e9ecef;
-        }
-
-        td {
             color: var(--cinza-texto);
-            border-bottom: 1px solid #f1f3f5;
         }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        .status-badge {
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        .status-ativo { background: #e8f5e9; color: #2e7d32; }
-        .status-andamento { background: #fff3e0; color: #ef6c00; }
-        .status-finalizado { background: #e3f2fd; color: #1565c0; }
 
         /* Responsividade */
         @media (max-width: 900px) {
@@ -305,7 +334,10 @@
                 font-size: 0.8rem;
                 white-space: nowrap;
             }
-            .main-content {
+            .banner-carousel {
+                height: 250px;
+            }
+            .content-area {
                 padding: 1.5rem;
             }
         }
@@ -325,10 +357,10 @@
         </div>
         <nav>
             <a href="#" class="active"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
-            <a href="#"><i class="fa-solid fa-diagram-project"></i> Projetos</a>
-            <a href="#"><i class="fa-solid fa-file-lines"></i> Relatórios</a>
-            <a href="#"><i class="fa-solid fa-users"></i> Equipe</a>
-            <a href="#"><i class="fa-solid fa-gear"></i> Configurações</a>
+            <a href="6.html"><i class="fa-solid fa-diagram-project"></i> Projeto</a>
+            <a href="7.html"><i class="fa-solid fa-users"></i> Comunidade</a>
+            <a href="8.html"><i class="fa-solid fa-calendar-check"></i> Reuniões</a>
+            <a href="9.html"><i class="fa-solid fa-briefcase"></i> Trabalhos</a>
         </nav>
         <div class="logout-area">
             <a href="principal.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
@@ -336,84 +368,119 @@
     </aside>
 
     <!-- Conteúdo principal -->
-    <main class="main-content">
-        <div class="top-header">
-            <h1>Dashboard</h1>
-            <div class="date"><i class="fa-regular fa-calendar"></i> 10 de Agosto de 2026</div>
+    <div class="main-content">
+        <!-- Banner carrossel (8 slides, 4s cada) -->
+        <div class="banner-carousel" id="bannerCarousel">
+            <div class="slides" id="slidesContainer">
+                <!-- Slides serão gerados dinamicamente pelo JS -->
+            </div>
+            <div class="banner-dots" id="dotsContainer"></div>
         </div>
 
-        <!-- Cards resumo -->
-        <div class="cards-grid">
-            <div class="card-resumo">
-                <div class="icon-box"><i class="fa-solid fa-city"></i></div>
-                <div class="info">
-                    <h3>Municípios Atendidos</h3>
-                    <div class="numero">48</div>
-                </div>
+        <!-- Área de conteúdo -->
+        <div class="content-area">
+            <h2 class="section-title">Acesso rápido</h2>
+            <div class="number-buttons">
+                <a href="6.html" class="num-btn">6</a>
+                <a href="7.html" class="num-btn">7</a>
+                <a href="8.html" class="num-btn">8</a>
+                <a href="9.html" class="num-btn">9</a>
+                <a href="10.html" class="num-btn">10</a>
+                <a href="11.html" class="num-btn">11</a>
+                <a href="12.html" class="num-btn">12</a>
+                <a href="13.html" class="num-btn">13</a>
+                <a href="14.html" class="num-btn">14</a>
+                <a href="15.html" class="num-btn">15</a>
             </div>
-            <div class="card-resumo">
-                <div class="icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <div class="info">
-                    <h3>Apps Ativos</h3>
-                    <div class="numero">12</div>
-                </div>
-            </div>
-            <div class="card-resumo">
-                <div class="icon-box"><i class="fa-solid fa-user-check"></i></div>
-                <div class="info">
-                    <h3>Usuários Impactados</h3>
-                    <div class="numero">32.5k</div>
-                </div>
-            </div>
-            <div class="card-resumo">
-                <div class="icon-box"><i class="fa-solid fa-star"></i></div>
-                <div class="info">
-                    <h3>Satisfação</h3>
-                    <div class="numero">94%</div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Projetos recentes -->
-        <h2 class="section-title">Projetos Recentes</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Projeto</th>
-                        <th>Município</th>
-                        <th>Status</th>
-                        <th>Última Atualização</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ouvidoria Cidadã</td>
-                        <td>Curitiba - PR</td>
-                        <td><span class="status-badge status-ativo">Ativo</span></td>
-                        <td>09/08/2026</td>
-                    </tr>
-                    <tr>
-                        <td>Saúde Conectada</td>
-                        <td>Joinville - SC</td>
-                        <td><span class="status-badge status-andamento">Em Andamento</span></td>
-                        <td>07/08/2026</td>
-                    </tr>
-                    <tr>
-                        <td>Educação Digital</td>
-                        <td>Londrina - PR</td>
-                        <td><span class="status-badge status-finalizado">Finalizado</span></td>
-                        <td>01/08/2026</td>
-                    </tr>
-                    <tr>
-                        <td>Transporte Público Inteligente</td>
-                        <td>Florianópolis - SC</td>
-                        <td><span class="status-badge status-ativo">Ativo</span></td>
-                        <td>05/08/2026</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2 class="section-title">Nossa Equipe</h2>
+            <div class="worker-cards">
+                <div class="worker-card">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="Funcionário">
+                    <h3>Ana Silva</h3>
+                    <p>Desenvolvedora Fullstack</p>
+                </div>
+                <div class="worker-card">
+                    <img src="https://i.pravatar.cc/150?img=2" alt="Funcionário">
+                    <h3>João Souza</h3>
+                    <p>Designer UX/UI</p>
+                </div>
+                <div class="worker-card">
+                    <img src="https://i.pravatar.cc/150?img=3" alt="Funcionário">
+                    <h3>Marina Costa</h3>
+                    <p>Gerente de Projetos</p>
+                </div>
+                <div class="worker-card">
+                    <img src="https://i.pravatar.cc/150?img=4" alt="Funcionário">
+                    <h3>Pedro Santos</h3>
+                    <p>Analista de Dados</p>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <script>
+        // Configuração do banner carrossel (8 slides, 4 seg cada)
+        const slidesData = [
+            { title: "Inovação Social", bg: "https://picsum.photos/id/10/1200/400" },
+            { title: "Tecnologia Cidadã", bg: "https://picsum.photos/id/20/1200/400" },
+            { title: "Gestão Transparente", bg: "https://picsum.photos/id/30/1200/400" },
+            { title: "Comunidade Ativa", bg: "https://picsum.photos/id/40/1200/400" },
+            { title: "Resultados Reais", bg: "https://picsum.photos/id/50/1200/400" },
+            { title: "Futuro Digital", bg: "https://picsum.photos/id/60/1200/400" },
+            { title: "Cidades Inteligentes", bg: "https://picsum.photos/id/70/1200/400" },
+            { title: "00brother", bg: "https://picsum.photos/id/80/1200/400" }
+        ];
+
+        const slidesContainer = document.getElementById('slidesContainer');
+        const dotsContainer = document.getElementById('dotsContainer');
+        let currentIndex = 0;
+        let interval;
+
+        // Criar slides e dots
+        slidesData.forEach((slide, index) => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = 'slide';
+            slideDiv.style.backgroundImage = `url('${slide.bg}')`;
+            slideDiv.innerHTML = `
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h2>${slide.title}</h2>
+                </div>
+            `;
+            slidesContainer.appendChild(slideDiv);
+
+            const dot = document.createElement('span');
+            dot.className = 'dot' + (index === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(index) {
+            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+            dots[currentIndex].classList.remove('active');
+            dots[index].classList.add('active');
+            currentIndex = index;
+            resetInterval();
+        }
+
+        function nextSlide() {
+            const next = (currentIndex + 1) % slidesData.length;
+            goToSlide(next);
+        }
+
+        function startInterval() {
+            interval = setInterval(nextSlide, 4000); // 4 segundos
+        }
+
+        function resetInterval() {
+            clearInterval(interval);
+            startInterval();
+        }
+
+        startInterval();
+    </script>
 </body>
 </html>
