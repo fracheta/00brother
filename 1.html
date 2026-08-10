@@ -35,11 +35,11 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ==================== HERO PRINCIPAL (FUNDO + 2 BANNERS LATERAIS + CONTEÚDO CENTRAL) ==================== */
+        /* ==================== HERO COM FUNDO + BANNERS LATERAIS + CONTEÚDO CENTRAL SEM CAIXA BRANCA ==================== */
         header {
             position: relative;
             width: 100%;
-            min-height: 90vh; /* ocupa quase toda a tela */
+            min-height: 90vh;
             display: flex;
             align-items: stretch;
             background: linear-gradient(0deg, rgba(26, 42, 58, 0.7) 0%, rgba(26, 42, 58, 0.4) 100%),
@@ -48,7 +48,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
         }
 
-        /* Banner vertical esquerdo */
+        /* Banners laterais */
         .banner-left,
         .banner-right {
             width: 280px;
@@ -83,7 +83,6 @@
             opacity: 1;
         }
 
-        /* Dots de navegação dos banners */
         .banner-dots {
             position: absolute;
             bottom: 20px;
@@ -111,7 +110,7 @@
             box-shadow: 0 0 12px rgba(201, 168, 76, 0.7);
         }
 
-        /* Conteúdo central (logo + cartão) */
+        /* Conteúdo central (logo + textos + botão) */
         .hero-center {
             flex: 1;
             display: flex;
@@ -120,71 +119,63 @@
             align-items: center;
             padding: 2rem 1rem;
             z-index: 2;
+            text-align: center;
+            color: #fff;
         }
 
         .logo {
-            max-width: 300px;        /* logo maior */
-            width: 80%;
+            max-width: 450px;            /* Logo bem maior */
+            width: 90%;
             height: auto;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             border-radius: 14px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.92);
-            padding: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
         }
 
-        .hero-card {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: var(--borda);
-            padding: 2.5rem 2rem;
-            max-width: 520px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-            border-left: 6px solid var(--dourado);
-            transition: box-shadow var(--transicao);
-        }
-
-        .hero-card:hover {
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-card h1 {
-            font-size: 2rem;
+        .hero-center h1 {
+            font-size: 2.8rem;
             font-weight: 700;
-            color: var(--azul-corporativo);
             margin-bottom: 1rem;
-            letter-spacing: -0.3px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            letter-spacing: -0.5px;
         }
 
-        .hero-card p {
-            font-size: 1.05rem;
-            color: var(--cinza-texto);
-            margin-bottom: 2rem;
+        .hero-center p {
+            font-size: 1.2rem;
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
             line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .hero-center p strong {
+            font-weight: 600;
         }
 
         .btn-acessar {
             display: inline-block;
-            padding: 15px 36px;
+            padding: 16px 40px;
             background: var(--azul-corporativo);
             color: var(--branco);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.05rem;
             letter-spacing: 0.5px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             transition: all var(--transicao);
-            box-shadow: 0 6px 18px rgba(26, 42, 58, 0.25);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.35);
             text-decoration: none;
+            backdrop-filter: blur(4px);
+            background: rgba(26, 42, 58, 0.9);
         }
 
         .btn-acessar:hover {
             background: #0f1e2c;
-            box-shadow: 0 10px 25px rgba(26, 42, 58, 0.4);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.5);
             transform: translateY(-2px);
         }
 
@@ -293,14 +284,13 @@
             color: var(--dourado-claro);
         }
 
-        /* ==================== RESPONSIVIDADE (CELULAR: TUDO EMPILHADO) ==================== */
+        /* ==================== RESPONSIVIDADE ==================== */
         @media (max-width: 900px) {
             header {
                 flex-direction: column;
                 min-height: auto;
             }
 
-            /* Banners laterais viram faixas horizontais empilhadas */
             .banner-left,
             .banner-right {
                 width: 100%;
@@ -309,55 +299,39 @@
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
 
-            .banner-left {
-                order: 1;
-            }
-
-            .hero-center {
-                order: 2;
-                padding: 2rem 1rem;
-            }
-
-            .banner-right {
-                order: 3;
-            }
+            .banner-left { order: 1; }
+            .hero-center { order: 2; padding: 2.5rem 1.5rem; }
+            .banner-right { order: 3; }
 
             .logo {
-                max-width: 220px;
+                max-width: 300px;
             }
 
-            .hero-card {
-                padding: 2rem 1.5rem;
-                max-width: 100%;
+            .hero-center h1 {
+                font-size: 2rem;
             }
-
-            .hero-card h1 {
-                font-size: 1.7rem;
+            .hero-center p {
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 480px) {
             .logo {
-                max-width: 180px;
+                max-width: 240px;
             }
-            .hero-card {
-                padding: 1.5rem 1rem;
+            .hero-center h1 {
+                font-size: 1.8rem;
             }
             .btn-acessar {
                 width: 100%;
-                text-align: center;
                 padding: 14px 20px;
-            }
-            .banner-dots .dot {
-                width: 8px;
-                height: 8px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- HERO COM FUNDO, DOIS BANNERS LATERAIS E CONTEÚDO CENTRAL -->
+    <!-- HERO PRINCIPAL -->
     <header>
         <!-- Banner esquerdo -->
         <div class="banner-left" id="bannerLeft">
@@ -368,14 +342,12 @@
             <div class="banner-dots" id="dotsLeft"></div>
         </div>
 
-        <!-- Conteúdo central: logo (separada) + cartão de boas-vindas -->
+        <!-- Centro: logo + textos (sem caixa) -->
         <div class="hero-center">
             <img src="logo2.img" alt="00brother - Logotipo" class="logo">
-            <div class="hero-card">
-                <h1>Bem-vindo, Gestor</h1>
-                <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, voltada ao desenvolvimento de aplicações com impacto social e inovação tecnológica.</p>
-                <a href="principal.html" class="btn-acessar">Acessar painel</a>
-            </div>
+            <h1>Bem-vindo, Gestor</h1>
+            <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, voltada ao desenvolvimento de aplicações com impacto social e inovação tecnológica.</p>
+            <a href="principal.html" class="btn-acessar">Acessar painel</a>
         </div>
 
         <!-- Banner direito -->
@@ -430,7 +402,6 @@
         </div>
     </footer>
 
-    <!-- Script dos banners -->
     <script>
         function configurarBanner(containerId, dotsId) {
             const container = document.getElementById(containerId);
@@ -439,7 +410,6 @@
             let indiceAtual = 0;
             let intervalo;
 
-            // Criar dots
             imagens.forEach((_, i) => {
                 const dot = document.createElement('span');
                 dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -480,10 +450,8 @@
             iniciarIntervalo();
         }
 
-        // Inicializa ambos os banners
         configurarBanner('bannerLeft', 'dotsLeft');
         configurarBanner('bannerRight', 'dotsRight');
     </script>
-
 </body>
 </html>
