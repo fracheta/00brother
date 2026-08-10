@@ -2,9 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Abertura Responsiva</title>
   <style>
-    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
@@ -12,22 +12,31 @@
     }
 
     body {
-      background-color: #ffffff; /* fundo igual ao da logo */
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;        /* alinha ao topo */
+      height: 100vh;
+      padding-top: 8vh;              /* distância do topo – ajuste conforme desejar */
+      overflow: hidden;              /* evita que o zoom extrapole a tela */
+    }
+
+    .splash {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      width: 100%;
     }
 
     .splash img {
-      max-width: 85%; /* maior tamanho inicial */
+      display: block;
+      max-width: 85%;
       height: auto;
-      opacity: 0; /* começa transparente */
+      opacity: 0;
       transform: scale(1);
       animation: fadeZoom 4s forwards;
     }
 
-    /* Animação: aparece devagar (fade-in) e aumenta 20% */
     @keyframes fadeZoom {
       0% {
         opacity: 0;
@@ -35,26 +44,31 @@
       }
       100% {
         opacity: 1;
-        transform: scale(1.2); /* aumenta 20% */
+        transform: scale(1.2);
       }
     }
 
-    /* Responsividade extra */
+    /* Telas médias e grandes */
     @media (min-width: 768px) {
       .splash img {
-        max-width: 500px; /* maior em telas grandes */
+        max-width: 500px;
+      }
+    }
+
+    /* Dispositivos muito pequenos */
+    @media (max-width: 480px) {
+      .splash img {
+        max-width: 90%;
       }
     }
   </style>
   <script>
-    // Redireciona para 1.html após 5 segundos
     setTimeout(function() {
       window.location.href = "1.html";
     }, 5000);
   </script>
 </head>
 <body>
-  <!-- Tela de abertura com a logo -->
   <div class="splash">
     <img src="logo.jpeg" alt="Logo de abertura">
   </div>
