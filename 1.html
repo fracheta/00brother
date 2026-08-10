@@ -35,87 +35,75 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ==================== HEADER COM LOGO CENTRALIZADA E FUNDO ==================== */
+        /* ==================== HERO PRINCIPAL (LOGO + FUNDO + TEXTO + BANNER LATERAL) ==================== */
         header {
+            position: relative;
             width: 100%;
-            min-height: 55vh;
-            background: linear-gradient(0deg, rgba(26, 42, 58, 0.7) 0%, rgba(26, 42, 58, 0.45) 100%),
-                url('fundo-logo.jpg') no-repeat center center;
-            background-size: cover;
+            min-height: 90vh;               /* ocupa quase toda a tela */
             display: flex;
-            flex-direction: column;
+            align-items: stretch;
+            background: linear-gradient(0deg, rgba(26, 42, 58, 0.7) 0%, rgba(26, 42, 58, 0.4) 100%),
+                        url('fundo-logo.jpg') no-repeat center center;
+            background-size: cover;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Área da esquerda: conteúdo centralizado (logo, texto, botão) */
+        .hero-content {
+            flex: 1;
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 3rem 1.5rem;
-            position: relative;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .logo {
-            max-width: 300px;
-            width: 70%;
-            height: auto;
-            border-radius: 14px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform var(--transicao);
+            padding: 2rem;
             z-index: 2;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 8px;
         }
 
-        .logo:hover {
-            transform: scale(1.03);
-        }
-
-        /* ==================== CONTEÚDO PRINCIPAL (DUAS COLUNAS) ==================== */
-        .main-content {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 2.5rem;
-            padding: 2.5rem 5%;
-            max-width: 1300px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        /* Coluna da esquerda: boas-vindas */
-        .welcome-box {
-            flex: 1 1 420px;
-            max-width: 500px;
-            background: var(--branco);
-            padding: 3rem 2.5rem;
+        .hero-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: var(--borda);
-            box-shadow: var(--sombra-suave);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-left: 5px solid var(--dourado);
+            padding: 3rem 2.5rem;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            border-left: 6px solid var(--dourado);
             transition: box-shadow var(--transicao);
         }
 
-        .welcome-box:hover {
-            box-shadow: var(--sombra-media);
+        .hero-card:hover {
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
         }
 
-        .welcome-box h1 {
-            font-size: 2.2rem;
+        .logo {
+            max-width: 220px;
+            width: 70%;
+            height: auto;
+            margin-bottom: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px;
+        }
+
+        .hero-card h1 {
+            font-size: 2rem;
             font-weight: 700;
             color: var(--azul-corporativo);
             margin-bottom: 1rem;
             letter-spacing: -0.3px;
         }
 
-        .welcome-box p {
-            font-size: 1.1rem;
+        .hero-card p {
+            font-size: 1.05rem;
             color: var(--cinza-texto);
-            margin-bottom: 2.2rem;
+            margin-bottom: 2rem;
             line-height: 1.7;
         }
 
         .btn-acessar {
             display: inline-block;
-            align-self: flex-start;
             padding: 15px 36px;
             background: var(--azul-corporativo);
             color: var(--branco);
@@ -128,7 +116,6 @@
             transition: all var(--transicao);
             box-shadow: 0 6px 18px rgba(26, 42, 58, 0.25);
             text-decoration: none;
-            text-align: center;
         }
 
         .btn-acessar:hover {
@@ -137,20 +124,18 @@
             transform: translateY(-2px);
         }
 
-        /* Coluna da direita: banner rotativo */
-        .banner-wrapper {
-            flex: 1 1 500px;
-            max-width: 620px;
-            border-radius: var(--borda);
-            overflow: hidden;
-            box-shadow: var(--sombra-media);
+        /* Banner vertical no lado direito */
+        .banner-vertical {
+            width: 300px;
+            flex-shrink: 0;
             position: relative;
-            background: #e9ecf0;
-            aspect-ratio: 16 / 10;
-            min-height: 300px;
+            overflow: hidden;
+            background: #000;         /* fundo caso as imagens demorem */
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 3;
         }
 
-        .banner-wrapper img {
+        .banner-vertical img {
             position: absolute;
             inset: 0;
             width: 100%;
@@ -160,50 +145,51 @@
             transition: opacity 0.8s ease;
         }
 
-        .banner-wrapper img.active {
+        .banner-vertical img.active {
             opacity: 1;
         }
 
-        /* Indicadores de navegação do banner */
+        /* Dots de navegação do banner */
         .banner-dots {
             position: absolute;
-            bottom: 18px;
-            right: 20px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             gap: 8px;
-            z-index: 3;
+            z-index: 4;
         }
 
         .banner-dots .dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.55);
             cursor: pointer;
             transition: all var(--transicao);
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         .banner-dots .dot.active {
             background: var(--dourado);
             border-color: var(--dourado);
             transform: scale(1.3);
-            box-shadow: 0 0 10px rgba(201, 168, 76, 0.6);
+            box-shadow: 0 0 12px rgba(201, 168, 76, 0.7);
         }
 
         /* ==================== SEÇÃO INSTITUCIONAL ==================== */
         .info-section {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 3rem 5% 4rem;
+            padding: 4rem 5% 4rem;
         }
 
-        .info-section .section-title {
+        .section-title {
             text-align: center;
             margin-bottom: 2.5rem;
         }
 
-        .info-section .section-title h2 {
+        .section-title h2 {
             font-size: 2rem;
             font-weight: 700;
             color: var(--azul-corporativo);
@@ -211,7 +197,7 @@
             display: inline-block;
         }
 
-        .info-section .section-title h2::after {
+        .section-title h2::after {
             content: '';
             position: absolute;
             bottom: -8px;
@@ -225,7 +211,7 @@
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
             margin-top: 1rem;
         }
@@ -246,7 +232,7 @@
         }
 
         .info-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.8rem;
             color: var(--azul-medio);
@@ -299,87 +285,77 @@
         /* ==================== RESPONSIVIDADE ==================== */
         @media (max-width: 900px) {
             header {
-                min-height: 40vh;
-            }
-            .main-content {
                 flex-direction: column;
-                align-items: center;
-                padding: 2rem 1.2rem;
-                gap: 2rem;
+                min-height: auto;
             }
-            .welcome-box,
-            .banner-wrapper {
-                max-width: 100%;
+
+            .hero-content {
+                padding: 2rem 1rem;
+                order: 1;
+            }
+
+            .banner-vertical {
                 width: 100%;
+                height: 250px;          /* banner horizontal em telas menores */
+                flex-shrink: unset;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                order: 2;
             }
-            .welcome-box {
+
+            .hero-card {
                 padding: 2rem 1.5rem;
+                max-width: 100%;
             }
-            .welcome-box h1 {
-                font-size: 1.8rem;
+
+            .hero-card h1 {
+                font-size: 1.7rem;
             }
         }
 
         @media (max-width: 480px) {
-            header {
-                min-height: 32vh;
-                padding: 2rem 1rem;
+            .hero-card {
+                padding: 1.5rem 1rem;
             }
             .logo {
-                max-width: 220px;
-            }
-            .welcome-box {
-                border-left-width: 4px;
-                padding: 1.5rem 1.2rem;
+                max-width: 160px;
             }
             .btn-acessar {
                 width: 100%;
                 text-align: center;
                 padding: 14px 20px;
             }
-            .banner-dots {
-                bottom: 10px;
-                right: 12px;
-                gap: 6px;
-            }
             .banner-dots .dot {
                 width: 8px;
                 height: 8px;
-            }
-            .info-section .section-title h2 {
-                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER COM LOGO CENTRALIZADA E IMAGEM DE FUNDO -->
+    <!-- HERO: imagem de fundo + logo + boas-vindas + banner vertical -->
     <header>
-        <img src="logo2.img" alt="00brother - Logotipo" class="logo">
-    </header>
-
-    <!-- CONTEÚDO PRINCIPAL: BOAS-VINDAS + BANNER ROTATIVO -->
-    <div class="main-content">
-        <!-- Coluna da esquerda: mensagem de boas-vindas -->
-        <div class="welcome-box">
-            <h1>Bem-vindo, Gestor</h1>
-            <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, voltada ao desenvolvimento de aplicações com impacto social e inovação tecnológica.</p>
-            <a href="principal.html" class="btn-acessar">Acessar painel</a>
+        <!-- Conteúdo centralizado (esquerda) -->
+        <div class="hero-content">
+            <div class="hero-card">
+                <img src="logo2.img" alt="00brother - Logotipo" class="logo">
+                <h1>Bem-vindo, Gestor</h1>
+                <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, voltada ao desenvolvimento de aplicações com impacto social e inovação tecnológica.</p>
+                <a href="principal.html" class="btn-acessar">Acessar painel</a>
+            </div>
         </div>
 
-        <!-- Coluna da direita: banner rotativo com 4 imagens -->
-        <div class="banner-wrapper" id="bannerContainer">
+        <!-- Banner vertical (lado direito) -->
+        <div class="banner-vertical" id="bannerVertical">
             <img src="banner1.jpg" class="active" alt="Banner 1">
             <img src="banner2.jpg" alt="Banner 2">
             <img src="banner3.jpg" alt="Banner 3">
             <img src="banner4.jpg" alt="Banner 4">
-            <!-- Dots de navegação -->
             <div class="banner-dots" id="bannerDots"></div>
         </div>
-    </div>
+    </header>
 
-    <!-- SEÇÃO INSTITUCIONAL COM INFORMAÇÕES DA EMPRESA -->
+    <!-- SEÇÃO INSTITUCIONAL -->
     <div class="info-section">
         <div class="section-title">
             <h2>Sobre a 00brother</h2>
@@ -393,7 +369,7 @@
             <div class="info-card">
                 <div class="icone">🤝</div>
                 <h3>Impacto Social Real</h3>
-                <p>Cada projeto nasce de uma escuta ativa das comunidades e gestores públicos, garantindo que a tecnologia atenda necessidades concretas da população.</p>
+                <p>Cada projeto nasce da escuta ativa das comunidades e gestores públicos, garantindo que a tecnologia atenda necessidades concretas da população.</p>
             </div>
             <div class="info-card">
                 <div class="icone">🔒</div>
@@ -424,13 +400,13 @@
     <!-- Script do banner rotativo -->
     <script>
         (function() {
-            const container = document.getElementById('bannerContainer');
+            const container = document.getElementById('bannerVertical');
             const imagens = container.querySelectorAll('img');
             const dotsContainer = document.getElementById('bannerDots');
             let indiceAtual = 0;
             let intervalo;
 
-            // Criar dots dinamicamente
+            // Cria os dots
             imagens.forEach((_, i) => {
                 const dot = document.createElement('span');
                 dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -465,7 +441,7 @@
                 iniciarIntervalo();
             }
 
-            // Pausar ao hover para melhor usabilidade
+            // Pausa ao passar o mouse
             container.addEventListener('mouseenter', () => clearInterval(intervalo));
             container.addEventListener('mouseleave', iniciarIntervalo);
 
