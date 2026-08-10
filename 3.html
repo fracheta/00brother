@@ -1,0 +1,419 @@
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00brother | Painel do Gestor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --azul-corporativo: #1a2a3a;
+            --azul-medio: #2c3e50;
+            --dourado: #c9a84c;
+            --dourado-claro: #dfc27d;
+            --branco: #ffffff;
+            --cinza-claro: #f1f3f5;
+            --cinza-texto: #5a6a7a;
+            --sombra-suave: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --sombra-media: 0 15px 40px rgba(0, 0, 0, 0.1);
+            --borda: 16px;
+            --transicao: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f6f8;
+            color: var(--azul-medio);
+            display: flex;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== SIDEBAR ========== */
+        .sidebar {
+            width: 260px;
+            background: var(--azul-corporativo);
+            color: #cfd8dc;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem 0;
+            flex-shrink: 0;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.2);
+            transition: width var(--transicao);
+        }
+
+        .sidebar .logo-area {
+            padding: 0 1.8rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar .logo-area .brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar .logo-area .brand i {
+            color: var(--dourado);
+        }
+
+        .sidebar .logo-area .user-info {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #b0bec5;
+        }
+
+        .sidebar .logo-area .user-info strong {
+            color: #fff;
+            display: block;
+            font-weight: 600;
+        }
+
+        .sidebar nav {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        .sidebar nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            color: #b0bec5;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all var(--transicao);
+            margin-bottom: 4px;
+        }
+
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+
+        .sidebar nav a.active {
+            background: rgba(201, 168, 76, 0.15);
+            color: var(--dourado);
+            font-weight: 600;
+        }
+
+        .sidebar nav a i {
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .sidebar .logout-area {
+            padding: 1rem 1.8rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar .logout-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #b0bec5;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color var(--transicao);
+        }
+
+        .sidebar .logout-btn:hover {
+            color: #ff6b6b;
+        }
+
+        /* ========== CONTEÚDO PRINCIPAL ========== */
+        .main-content {
+            flex: 1;
+            padding: 2rem 2.5rem;
+            overflow-y: auto;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .top-header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--azul-corporativo);
+        }
+
+        .top-header .date {
+            font-size: 0.9rem;
+            color: var(--cinza-texto);
+            background: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: var(--sombra-suave);
+        }
+
+        /* Cards de resumo */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card-resumo {
+            background: #fff;
+            border-radius: var(--borda);
+            padding: 1.5rem;
+            box-shadow: var(--sombra-suave);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform var(--transicao), box-shadow var(--transicao);
+            border-left: 4px solid transparent;
+        }
+
+        .card-resumo:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .card-resumo .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(201, 168, 76, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--dourado);
+        }
+
+        .card-resumo .info h3 {
+            font-size: 0.9rem;
+            color: var(--cinza-texto);
+            font-weight: 500;
+        }
+
+        .card-resumo .info .numero {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--azul-corporativo);
+            line-height: 1.2;
+        }
+
+        .card-resumo:nth-child(1) { border-left-color: #4caf50; }
+        .card-resumo:nth-child(2) { border-left-color: #2196f3; }
+        .card-resumo:nth-child(3) { border-left-color: #ff9800; }
+        .card-resumo:nth-child(4) { border-left-color: #9c27b0; }
+
+        /* Tabela de projetos */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--azul-corporativo);
+            margin-bottom: 1rem;
+        }
+
+        .table-wrapper {
+            background: #fff;
+            border-radius: var(--borda);
+            box-shadow: var(--sombra-suave);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: var(--azul-medio);
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        td {
+            color: var(--cinza-texto);
+            border-bottom: 1px solid #f1f3f5;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-ativo { background: #e8f5e9; color: #2e7d32; }
+        .status-andamento { background: #fff3e0; color: #ef6c00; }
+        .status-finalizado { background: #e3f2fd; color: #1565c0; }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 0.8rem 1rem;
+            }
+            .sidebar .logo-area,
+            .sidebar .logout-area {
+                display: none;
+            }
+            .sidebar nav {
+                display: flex;
+                flex-direction: row;
+                gap: 0.5rem;
+                padding: 0;
+            }
+            .sidebar nav a {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="brand">
+                <i class="fa-solid fa-handshake"></i> 00brother
+            </div>
+            <div class="user-info">
+                <strong>Carlos Oliveira</strong>
+                Gestor Municipal
+            </div>
+        </div>
+        <nav>
+            <a href="#" class="active"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+            <a href="#"><i class="fa-solid fa-diagram-project"></i> Projetos</a>
+            <a href="#"><i class="fa-solid fa-file-lines"></i> Relatórios</a>
+            <a href="#"><i class="fa-solid fa-users"></i> Equipe</a>
+            <a href="#"><i class="fa-solid fa-gear"></i> Configurações</a>
+        </nav>
+        <div class="logout-area">
+            <a href="principal.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+        </div>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <div class="top-header">
+            <h1>Dashboard</h1>
+            <div class="date"><i class="fa-regular fa-calendar"></i> 10 de Agosto de 2026</div>
+        </div>
+
+        <!-- Cards resumo -->
+        <div class="cards-grid">
+            <div class="card-resumo">
+                <div class="icon-box"><i class="fa-solid fa-city"></i></div>
+                <div class="info">
+                    <h3>Municípios Atendidos</h3>
+                    <div class="numero">48</div>
+                </div>
+            </div>
+            <div class="card-resumo">
+                <div class="icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <div class="info">
+                    <h3>Apps Ativos</h3>
+                    <div class="numero">12</div>
+                </div>
+            </div>
+            <div class="card-resumo">
+                <div class="icon-box"><i class="fa-solid fa-user-check"></i></div>
+                <div class="info">
+                    <h3>Usuários Impactados</h3>
+                    <div class="numero">32.5k</div>
+                </div>
+            </div>
+            <div class="card-resumo">
+                <div class="icon-box"><i class="fa-solid fa-star"></i></div>
+                <div class="info">
+                    <h3>Satisfação</h3>
+                    <div class="numero">94%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projetos recentes -->
+        <h2 class="section-title">Projetos Recentes</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Projeto</th>
+                        <th>Município</th>
+                        <th>Status</th>
+                        <th>Última Atualização</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ouvidoria Cidadã</td>
+                        <td>Curitiba - PR</td>
+                        <td><span class="status-badge status-ativo">Ativo</span></td>
+                        <td>09/08/2026</td>
+                    </tr>
+                    <tr>
+                        <td>Saúde Conectada</td>
+                        <td>Joinville - SC</td>
+                        <td><span class="status-badge status-andamento">Em Andamento</span></td>
+                        <td>07/08/2026</td>
+                    </tr>
+                    <tr>
+                        <td>Educação Digital</td>
+                        <td>Londrina - PR</td>
+                        <td><span class="status-badge status-finalizado">Finalizado</span></td>
+                        <td>01/08/2026</td>
+                    </tr>
+                    <tr>
+                        <td>Transporte Público Inteligente</td>
+                        <td>Florianópolis - SC</td>
+                        <td><span class="status-badge status-ativo">Ativo</span></td>
+                        <td>05/08/2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
