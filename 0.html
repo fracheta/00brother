@@ -14,18 +14,19 @@
     body {
       background-color: #ffffff;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;        /* alinha ao topo */
+      justify-content: center;      /* centraliza horizontalmente */
+      align-items: center;          /* centraliza verticalmente */
       height: 100vh;
-      padding-top: 8vh;              /* distância do topo – ajuste conforme desejar */
-      overflow: hidden;              /* evita que o zoom extrapole a tela */
+      overflow: hidden;            /* evita barras de rolagem com o zoom */
     }
 
+    /* Container da logo – sobe um pouco em relação ao centro */
     .splash {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
+      transform: translateY(-6vh); /* ajuste fino: -6% da altura da tela */
     }
 
     .splash img {
