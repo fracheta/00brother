@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00brother | Criar Conta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --azul-corporativo: #1a2a3a;
+            --azul-medio: #2c3e50;
+            --dourado: #c9a84c;
+            --dourado-claro: #dfc27d;
+            --branco: #ffffff;
+            --cinza-claro: #f1f3f5;
+            --cinza-texto: #5a6a7a;
+            --sombra-suave: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --sombra-media: 0 15px 40px rgba(0, 0, 0, 0.1);
+            --borda: 16px;
+            --transicao: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f6f8 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: var(--azul-medio);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .register-card {
+            background: var(--branco);
+            width: 100%;
+            max-width: 480px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            padding: 2.5rem 2.2rem;
+            text-align: center;
+        }
+
+        .register-card .logo-mini {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--azul-corporativo);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .register-card .logo-mini i {
+            color: var(--dourado);
+            margin-right: 0.5rem;
+        }
+
+        .register-card h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--azul-corporativo);
+            margin-bottom: 0.5rem;
+        }
+
+        .register-card p.lead {
+            font-size: 0.95rem;
+            color: var(--cinza-texto);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        /* Formulário */
+        .input-group {
+            margin-bottom: 1.3rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            color: var(--azul-medio);
+        }
+
+        .input-field {
+            position: relative;
+        }
+
+        .input-field i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aab4;
+            font-size: 1rem;
+            transition: color var(--transicao);
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 14px 16px 14px 44px;
+            border: 1px solid #dce1e6;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: all var(--transicao);
+            background: #f9fafb;
+            color: var(--azul-corporativo);
+        }
+
+        .input-field input:focus {
+            outline: none;
+            border-color: var(--dourado);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+            background: #fff;
+        }
+
+        .input-field:focus-within i {
+            color: var(--dourado) !important;
+        }
+
+        /* Linha com dois campos */
+        .row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .row .input-group {
+            flex: 1;
+        }
+
+        .btn-cadastrar {
+            width: 100%;
+            padding: 15px;
+            background: var(--azul-corporativo);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all var(--transicao);
+            box-shadow: 0 8px 20px rgba(26, 42, 58, 0.3);
+            margin: 1.5rem 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-cadastrar:hover {
+            background: #0f1e2c;
+            box-shadow: 0 12px 28px rgba(26, 42, 58, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .login-link {
+            font-size: 0.9rem;
+            color: var(--cinza-texto);
+        }
+
+        .login-link a {
+            color: var(--dourado);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color var(--transicao);
+        }
+
+        .login-link a:hover {
+            color: #b8943a;
+        }
+
+        .back-home {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+        }
+
+        .back-home a {
+            color: var(--cinza-texto);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transicao);
+        }
+
+        .back-home a:hover {
+            color: var(--azul-corporativo);
+        }
+
+        /* Responsivo */
+        @media (max-width: 500px) {
+            .register-card {
+                padding: 2rem 1.5rem;
+            }
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .register-card h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-card">
+        <div class="logo-mini">
+            <i class="fa-solid fa-handshake"></i> 00brother
+        </div>
+        <h1>Criar Conta</h1>
+        <p class="lead">Preencha os dados para solicitar seu cadastro como gestor</p>
+
+        <!-- Formulário de cadastro (simulação) -->
+        <form action="principal.html" method="get">
+            <div class="input-group">
+                <label for="nome">Nome completo</label>
+                <div class="input-field">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="email">E-mail institucional</label>
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="ex: nome@orgao.gov.br" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label for="telefone">Telefone</label>
+                    <div class="input-field">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="municipio">Município</label>
+                    <div class="input-field">
+                        <i class="fa-solid fa-city"></i>
+                        <input type="text" id="municipio" name="municipio" placeholder="Sua cidade" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="senha">Senha</label>
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="senha" name="senha" placeholder="Mínimo 8 caracteres" minlength="8" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="confirmar-senha">Confirmar senha</label>
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Repita a senha" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-cadastrar">
+                <i class="fa-solid fa-user-plus"></i> Criar conta
+            </button>
+        </form>
+
+        <div class="login-link">
+            Já tem uma conta? <a href="principal.html">Faça login</a>
+        </div>
+
+        <div class="back-home">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar para a página inicial</a>
+        </div>
+    </div>
+</body>
+</html>
