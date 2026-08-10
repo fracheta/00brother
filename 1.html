@@ -35,11 +35,11 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ==================== HERO PRINCIPAL (LOGO + FUNDO + TEXTO + BANNER LATERAL) ==================== */
+        /* ==================== HERO PRINCIPAL (FUNDO + 2 BANNERS LATERAIS + CONTEÚDO CENTRAL) ==================== */
         header {
             position: relative;
             width: 100%;
-            min-height: 90vh;               /* ocupa quase toda a tela */
+            min-height: 90vh; /* ocupa quase toda a tela */
             display: flex;
             align-items: stretch;
             background: linear-gradient(0deg, rgba(26, 42, 58, 0.7) 0%, rgba(26, 42, 58, 0.4) 100%),
@@ -48,14 +48,89 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
         }
 
-        /* Área da esquerda: conteúdo centralizado (logo, texto, botão) */
-        .hero-content {
+        /* Banner vertical esquerdo */
+        .banner-left,
+        .banner-right {
+            width: 280px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+            z-index: 3;
+        }
+
+        .banner-left {
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner-right {
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner-left img,
+        .banner-right img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .banner-left img.active,
+        .banner-right img.active {
+            opacity: 1;
+        }
+
+        /* Dots de navegação dos banners */
+        .banner-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 4;
+        }
+
+        .banner-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.55);
+            cursor: pointer;
+            transition: all var(--transicao);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .banner-dots .dot.active {
+            background: var(--dourado);
+            border-color: var(--dourado);
+            transform: scale(1.3);
+            box-shadow: 0 0 12px rgba(201, 168, 76, 0.7);
+        }
+
+        /* Conteúdo central (logo + cartão) */
+        .hero-center {
             flex: 1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
             z-index: 2;
+        }
+
+        .logo {
+            max-width: 300px;        /* logo maior */
+            width: 80%;
+            height: auto;
+            margin-bottom: 2rem;
+            border-radius: 14px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.92);
+            padding: 8px;
         }
 
         .hero-card {
@@ -63,7 +138,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: var(--borda);
-            padding: 3rem 2.5rem;
+            padding: 2.5rem 2rem;
             max-width: 520px;
             width: 100%;
             text-align: center;
@@ -74,17 +149,6 @@
 
         .hero-card:hover {
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .logo {
-            max-width: 220px;
-            width: 70%;
-            height: auto;
-            margin-bottom: 1.8rem;
-            border-radius: 12px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-            background: rgba(255, 255, 255, 0.95);
-            padding: 6px;
         }
 
         .hero-card h1 {
@@ -122,59 +186,6 @@
             background: #0f1e2c;
             box-shadow: 0 10px 25px rgba(26, 42, 58, 0.4);
             transform: translateY(-2px);
-        }
-
-        /* Banner vertical no lado direito */
-        .banner-vertical {
-            width: 300px;
-            flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-            background: #000;         /* fundo caso as imagens demorem */
-            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
-            z-index: 3;
-        }
-
-        .banner-vertical img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .banner-vertical img.active {
-            opacity: 1;
-        }
-
-        /* Dots de navegação do banner */
-        .banner-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 4;
-        }
-
-        .banner-dots .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.55);
-            cursor: pointer;
-            transition: all var(--transicao);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .banner-dots .dot.active {
-            background: var(--dourado);
-            border-color: var(--dourado);
-            transform: scale(1.3);
-            box-shadow: 0 0 12px rgba(201, 168, 76, 0.7);
         }
 
         /* ==================== SEÇÃO INSTITUCIONAL ==================== */
@@ -282,24 +293,37 @@
             color: var(--dourado-claro);
         }
 
-        /* ==================== RESPONSIVIDADE ==================== */
+        /* ==================== RESPONSIVIDADE (CELULAR: TUDO EMPILHADO) ==================== */
         @media (max-width: 900px) {
             header {
                 flex-direction: column;
                 min-height: auto;
             }
 
-            .hero-content {
-                padding: 2rem 1rem;
+            /* Banners laterais viram faixas horizontais empilhadas */
+            .banner-left,
+            .banner-right {
+                width: 100%;
+                height: 200px;
+                flex-shrink: unset;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+
+            .banner-left {
                 order: 1;
             }
 
-            .banner-vertical {
-                width: 100%;
-                height: 250px;          /* banner horizontal em telas menores */
-                flex-shrink: unset;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            .hero-center {
                 order: 2;
+                padding: 2rem 1rem;
+            }
+
+            .banner-right {
+                order: 3;
+            }
+
+            .logo {
+                max-width: 220px;
             }
 
             .hero-card {
@@ -313,11 +337,11 @@
         }
 
         @media (max-width: 480px) {
+            .logo {
+                max-width: 180px;
+            }
             .hero-card {
                 padding: 1.5rem 1rem;
-            }
-            .logo {
-                max-width: 160px;
             }
             .btn-acessar {
                 width: 100%;
@@ -333,25 +357,34 @@
 </head>
 <body>
 
-    <!-- HERO: imagem de fundo + logo + boas-vindas + banner vertical -->
+    <!-- HERO COM FUNDO, DOIS BANNERS LATERAIS E CONTEÚDO CENTRAL -->
     <header>
-        <!-- Conteúdo centralizado (esquerda) -->
-        <div class="hero-content">
+        <!-- Banner esquerdo -->
+        <div class="banner-left" id="bannerLeft">
+            <img src="banner1.jpg" class="active" alt="Banner 1">
+            <img src="banner2.jpg" alt="Banner 2">
+            <img src="banner3.jpg" alt="Banner 3">
+            <img src="banner4.jpg" alt="Banner 4">
+            <div class="banner-dots" id="dotsLeft"></div>
+        </div>
+
+        <!-- Conteúdo central: logo (separada) + cartão de boas-vindas -->
+        <div class="hero-center">
+            <img src="logo2.img" alt="00brother - Logotipo" class="logo">
             <div class="hero-card">
-                <img src="logo2.img" alt="00brother - Logotipo" class="logo">
                 <h1>Bem-vindo, Gestor</h1>
                 <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, voltada ao desenvolvimento de aplicações com impacto social e inovação tecnológica.</p>
                 <a href="principal.html" class="btn-acessar">Acessar painel</a>
             </div>
         </div>
 
-        <!-- Banner vertical (lado direito) -->
-        <div class="banner-vertical" id="bannerVertical">
+        <!-- Banner direito -->
+        <div class="banner-right" id="bannerRight">
             <img src="banner1.jpg" class="active" alt="Banner 1">
             <img src="banner2.jpg" alt="Banner 2">
             <img src="banner3.jpg" alt="Banner 3">
             <img src="banner4.jpg" alt="Banner 4">
-            <div class="banner-dots" id="bannerDots"></div>
+            <div class="banner-dots" id="dotsRight"></div>
         </div>
     </header>
 
@@ -397,25 +430,25 @@
         </div>
     </footer>
 
-    <!-- Script do banner rotativo -->
+    <!-- Script dos banners -->
     <script>
-        (function() {
-            const container = document.getElementById('bannerVertical');
+        function configurarBanner(containerId, dotsId) {
+            const container = document.getElementById(containerId);
             const imagens = container.querySelectorAll('img');
-            const dotsContainer = document.getElementById('bannerDots');
+            const dotsContainer = document.getElementById(dotsId);
             let indiceAtual = 0;
             let intervalo;
 
-            // Cria os dots
+            // Criar dots
             imagens.forEach((_, i) => {
                 const dot = document.createElement('span');
                 dot.className = 'dot' + (i === 0 ? ' active' : '');
-                dot.setAttribute('aria-label', `Banner ${i + 1}`);
+                dot.setAttribute('aria-label', `Slide ${i + 1}`);
                 dot.addEventListener('click', () => mudarSlide(i));
                 dotsContainer.appendChild(dot);
             });
 
-            const dots = document.querySelectorAll('.dot');
+            const dots = dotsContainer.querySelectorAll('.dot');
 
             function mudarSlide(novoIndice) {
                 if (novoIndice === indiceAtual) return;
@@ -441,12 +474,15 @@
                 iniciarIntervalo();
             }
 
-            // Pausa ao passar o mouse
             container.addEventListener('mouseenter', () => clearInterval(intervalo));
             container.addEventListener('mouseleave', iniciarIntervalo);
 
             iniciarIntervalo();
-        })();
+        }
+
+        // Inicializa ambos os banners
+        configurarBanner('bannerLeft', 'dotsLeft');
+        configurarBanner('bannerRight', 'dotsRight');
     </script>
 
 </body>
