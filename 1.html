@@ -1,341 +1,477 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>00brother | Plataforma Corporativa</title>
-  <style>
-    :root {
-      --azul-corporativo: #1e3a5f;
-      --azul-destaque: #2c5282;
-      --azul-claro: #ebf4fa;
-      --cinza-texto: #4a5568;
-      --branco: #ffffff;
-      --sombra-suave: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
-      --sombra-media: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
-      --borda-arredondada: 16px;
-      --transicao: 0.25s ease;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00brother | Boas-Vindas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-corporativo: #1a2a3a;
+            --azul-medio: #2c3e50;
+            --dourado: #c9a84c;
+            --dourado-claro: #dfc27d;
+            --branco: #ffffff;
+            --cinza-claro: #f1f3f5;
+            --cinza-texto: #5a6a7a;
+            --sombra-suave: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --sombra-media: 0 15px 40px rgba(0, 0, 0, 0.1);
+            --borda: 16px;
+            --transicao: 0.3s ease;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      color: #1a202c;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      background-color: #f7f9fc; /* tom neutro caso a imagem do body não carregue */
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f6f8;
+            color: #1e2a36;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    /* ==================== HEADER HERO ==================== */
-    header {
-      width: 100%;
-      min-height: 65vh;               /* ocupa boa parte da tela */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: url('fundo-logo.jpg') no-repeat center center;
-      background-size: cover;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    }
+        /* ==================== HEADER COM LOGO CENTRALIZADA E FUNDO ==================== */
+        header {
+            width: 100%;
+            min-height: 55vh;
+            background: linear-gradient(0deg, rgba(26, 42, 58, 0.7) 0%, rgba(26, 42, 58, 0.45) 100%),
+                url('fundo-logo.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 1.5rem;
+            position: relative;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        }
 
-    /* Camada escura sutil para garantir contraste com o logo */
-    header::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.25);  /* escurecimento leve, ajuste conforme a imagem */
-      z-index: 1;
-    }
+        .logo {
+            max-width: 300px;
+            width: 70%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform var(--transicao);
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+        }
 
-    .logo {
-      max-width: 360px;
-      width: 70%;
-      height: auto;
-      border-radius: 14px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      position: relative;
-      z-index: 2;
-      transition: transform var(--transicao);
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-    }
+        .logo:hover {
+            transform: scale(1.03);
+        }
 
-    .logo:hover {
-      transform: scale(1.03);
-    }
+        /* ==================== CONTEÚDO PRINCIPAL (DUAS COLUNAS) ==================== */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2.5rem;
+            padding: 2.5rem 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
 
-    /* ==================== CONTEÚDO PRINCIPAL ==================== */
-    .main {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2.5rem 2rem;
-      gap: 3rem;
-      flex-wrap: wrap;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(4px);
-    }
+        /* Coluna da esquerda: boas-vindas */
+        .welcome-box {
+            flex: 1 1 420px;
+            max-width: 500px;
+            background: var(--branco);
+            padding: 3rem 2.5rem;
+            border-radius: var(--borda);
+            box-shadow: var(--sombra-suave);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 5px solid var(--dourado);
+            transition: box-shadow var(--transicao);
+        }
 
-    /* Banner profissional */
-    .banner-container {
-      flex: 1 1 500px;
-      max-width: 620px;
-      min-width: 300px;
-      border-radius: var(--borda-arredondada);
-      overflow: hidden;
-      box-shadow: var(--sombra-media);
-      position: relative;
-      background: #edf2f7;
-      aspect-ratio: 16 / 10;
-    }
+        .welcome-box:hover {
+            box-shadow: var(--sombra-media);
+        }
 
-    .banner-container img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-    }
+        .welcome-box h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--azul-corporativo);
+            margin-bottom: 1rem;
+            letter-spacing: -0.3px;
+        }
 
-    .banner-container img.active {
-      opacity: 1;
-    }
+        .welcome-box p {
+            font-size: 1.1rem;
+            color: var(--cinza-texto);
+            margin-bottom: 2.2rem;
+            line-height: 1.7;
+        }
 
-    .banner-btn {
-      position: absolute;
-      bottom: 24px;
-      left: 28px;
-      padding: 12px 28px;
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--azul-corporativo);
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.4px;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 10px;
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-      transition: all var(--transicao);
-      z-index: 2;
-    }
+        .btn-acessar {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 15px 36px;
+            background: var(--azul-corporativo);
+            color: var(--branco);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all var(--transicao);
+            box-shadow: 0 6px 18px rgba(26, 42, 58, 0.25);
+            text-decoration: none;
+            text-align: center;
+        }
 
-    .banner-btn:hover {
-      background: var(--branco);
-      border-color: var(--azul-corporativo);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      transform: translateY(-2px);
-    }
+        .btn-acessar:hover {
+            background: #0f1e2c;
+            box-shadow: 0 10px 25px rgba(26, 42, 58, 0.4);
+            transform: translateY(-2px);
+        }
 
-    /* Card de boas-vindas */
-    .welcome-card {
-      flex: 1 1 400px;
-      max-width: 480px;
-      min-width: 300px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      padding: 3rem 2.5rem;
-      border-radius: var(--borda-arredondada);
-      box-shadow: var(--sombra-suave);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-    }
+        /* Coluna da direita: banner rotativo */
+        .banner-wrapper {
+            flex: 1 1 500px;
+            max-width: 620px;
+            border-radius: var(--borda);
+            overflow: hidden;
+            box-shadow: var(--sombra-media);
+            position: relative;
+            background: #e9ecf0;
+            aspect-ratio: 16 / 10;
+            min-height: 300px;
+        }
 
-    .welcome-card h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #0f1825;
-      margin-bottom: 1.2rem;
-      letter-spacing: -0.3px;
-      line-height: 1.3;
-    }
+        .banner-wrapper img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
 
-    .accent-line {
-      width: 60px;
-      height: 3px;
-      background: var(--azul-corporativo);
-      margin-bottom: 1.8rem;
-      border-radius: 2px;
-    }
+        .banner-wrapper img.active {
+            opacity: 1;
+        }
 
-    .welcome-card p {
-      font-size: 1.1rem;
-      color: var(--cinza-texto);
-      margin-bottom: 2.5rem;
-      line-height: 1.7;
-    }
+        /* Indicadores de navegação do banner */
+        .banner-dots {
+            position: absolute;
+            bottom: 18px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+            z-index: 3;
+        }
 
-    .welcome-card p strong {
-      color: #0f1825;
-      font-weight: 600;
-    }
+        .banner-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all var(--transicao);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
 
-    .btn-primary {
-      display: inline-block;
-      padding: 15px 34px;
-      background: var(--azul-corporativo);
-      color: white;
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all var(--transicao);
-      box-shadow: 0 4px 14px rgba(30, 58, 95, 0.2);
-      text-align: center;
-    }
+        .banner-dots .dot.active {
+            background: var(--dourado);
+            border-color: var(--dourado);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(201, 168, 76, 0.6);
+        }
 
-    .btn-primary:hover {
-      background: #16304b;
-      box-shadow: 0 8px 22px rgba(30, 58, 95, 0.35);
-      transform: translateY(-2px);
-    }
+        /* ==================== SEÇÃO INSTITUCIONAL ==================== */
+        .info-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 3rem 5% 4rem;
+        }
 
-    /* ==================== RODAPÉ ==================== */
-    footer {
-      background: #0f1825;
-      color: #cbd5e0;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.3px;
-    }
+        .info-section .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
 
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.8rem;
-      margin-top: 0.8rem;
-    }
+        .info-section .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--azul-corporativo);
+            position: relative;
+            display: inline-block;
+        }
 
-    .footer-links a {
-      color: #a0aec0;
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color var(--transicao);
-      padding: 4px 0;
-      border-bottom: 1px solid transparent;
-    }
+        .info-section .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--dourado);
+            border-radius: 3px;
+        }
 
-    .footer-links a:hover {
-      color: white;
-      border-bottom-color: var(--azul-claro);
-    }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
 
-    .footer-links img {
-      width: 16px;
-      height: 16px;
-      opacity: 0.8;
-    }
+        .info-card {
+            background: var(--branco);
+            padding: 2rem 1.8rem;
+            border-radius: var(--borda);
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicao);
+            border-bottom: 4px solid transparent;
+        }
 
-    /* ==================== RESPONSIVIDADE ==================== */
-    @media (max-width: 900px) {
-      header {
-        min-height: 45vh;        /* ocupa menos em telas menores, mas ainda com destaque */
-      }
-      .main {
-        flex-direction: column;
-        padding: 2rem 1.2rem;
-        gap: 2rem;
-      }
-      .banner-container,
-      .welcome-card {
-        max-width: 100%;
-        width: 100%;
-      }
-      .welcome-card {
-        padding: 2rem 1.5rem;
-      }
-      .welcome-card h1 {
-        font-size: 1.8rem;
-      }
-    }
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--sombra-media);
+            border-bottom-color: var(--dourado);
+        }
 
-    @media (max-width: 480px) {
-      header {
-        min-height: 40vh;
-      }
-      .logo {
-        max-width: 240px;
-      }
-      .banner-btn {
-        bottom: 14px;
-        left: 16px;
-        padding: 8px 18px;
-        font-size: 0.85rem;
-      }
-      .welcome-card {
-        border-radius: 12px;
-      }
-      .footer-links {
-        gap: 1rem;
-      }
-    }
-  </style>
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--azul-medio);
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            color: var(--cinza-texto);
+            line-height: 1.6;
+        }
+
+        .info-card .icone {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dourado);
+        }
+
+        /* ==================== RODAPÉ ==================== */
+        footer {
+            background: var(--azul-corporativo);
+            color: #b0bec5;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 4px 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .footer-links a {
+            color: #cfd8dc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transicao);
+        }
+
+        .footer-links a:hover {
+            color: var(--dourado-claro);
+        }
+
+        /* ==================== RESPONSIVIDADE ==================== */
+        @media (max-width: 900px) {
+            header {
+                min-height: 40vh;
+            }
+            .main-content {
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 1.2rem;
+                gap: 2rem;
+            }
+            .welcome-box,
+            .banner-wrapper {
+                max-width: 100%;
+                width: 100%;
+            }
+            .welcome-box {
+                padding: 2rem 1.5rem;
+            }
+            .welcome-box h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                min-height: 32vh;
+                padding: 2rem 1rem;
+            }
+            .logo {
+                max-width: 220px;
+            }
+            .welcome-box {
+                border-left-width: 4px;
+                padding: 1.5rem 1.2rem;
+            }
+            .btn-acessar {
+                width: 100%;
+                text-align: center;
+                padding: 14px 20px;
+            }
+            .banner-dots {
+                bottom: 10px;
+                right: 12px;
+                gap: 6px;
+            }
+            .banner-dots .dot {
+                width: 8px;
+                height: 8px;
+            }
+            .info-section .section-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Hero com imagem de fundo atrás da logo -->
-  <header>
-    <img src="logo2.img" alt="00brother – identidade corporativa" class="logo">
-  </header>
 
-  <div class="main">
-    <!-- Banner rotativo de projetos -->
-    <div class="banner-container" id="bannerContainer">
-      <img src="banner1.jpg" class="active" alt="Projeto em destaque 1">
-      <img src="banner2.jpg" alt="Projeto em destaque 2">
-      <img src="banner3.jpg" alt="Projeto em destaque 3">
-      <button class="banner-btn" onclick="window.location.href='conhecer.html'">Conhecer projetos</button>
+    <!-- HEADER COM LOGO CENTRALIZADA E IMAGEM DE FUNDO -->
+    <header>
+        <img src="logo2.img" alt="00brother - Logotipo" class="logo">
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL: BOAS-VINDAS + BANNER ROTATIVO -->
+    <div class="main-content">
+        <!-- Coluna da esquerda: mensagem de boas-vindas -->
+        <div class="welcome-box">
+            <h1>Bem-vindo, Gestor</h1>
+            <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, voltada ao desenvolvimento de aplicações com impacto social e inovação tecnológica.</p>
+            <a href="principal.html" class="btn-acessar">Acessar painel</a>
+        </div>
+
+        <!-- Coluna da direita: banner rotativo com 4 imagens -->
+        <div class="banner-wrapper" id="bannerContainer">
+            <img src="banner1.jpg" class="active" alt="Banner 1">
+            <img src="banner2.jpg" alt="Banner 2">
+            <img src="banner3.jpg" alt="Banner 3">
+            <img src="banner4.jpg" alt="Banner 4">
+            <!-- Dots de navegação -->
+            <div class="banner-dots" id="bannerDots"></div>
+        </div>
     </div>
 
-    <!-- Mensagem de boas-vindas -->
-    <div class="welcome-card">
-      <h1>Bem-vindo, Gestor</h1>
-      <div class="accent-line"></div>
-      <p>Você está acessando a plataforma exclusiva da <strong>00brother</strong>, voltada ao desenvolvimento de aplicações com impacto social e inovação tecnológica.</p>
-      <button class="btn-primary" onclick="window.location.href='principal.html'">Acessar painel</button>
+    <!-- SEÇÃO INSTITUCIONAL COM INFORMAÇÕES DA EMPRESA -->
+    <div class="info-section">
+        <div class="section-title">
+            <h2>Sobre a 00brother</h2>
+        </div>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icone">💡</div>
+                <h3>Inovação com Propósito</h3>
+                <p>Desenvolvemos aplicativos e plataformas que unem tecnologia de ponta a causas sociais relevantes, gerando impacto positivo mensurável.</p>
+            </div>
+            <div class="info-card">
+                <div class="icone">🤝</div>
+                <h3>Impacto Social Real</h3>
+                <p>Cada projeto nasce de uma escuta ativa das comunidades e gestores públicos, garantindo que a tecnologia atenda necessidades concretas da população.</p>
+            </div>
+            <div class="info-card">
+                <div class="icone">🔒</div>
+                <h3>Segurança e Confiabilidade</h3>
+                <p>Todas as nossas soluções seguem rigorosos padrões de proteção de dados (LGPD) e contam com moderação híbrida para ambientes digitais saudáveis.</p>
+            </div>
+            <div class="info-card">
+                <div class="icone">🌎</div>
+                <h3>Presença Nacional</h3>
+                <p>Atuamos em dezenas de municípios brasileiros, conectando cidadãos a serviços essenciais e fortalecendo a democracia digital em todo o país.</p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <footer>
-    <p>© 2026 00brother · Grupo Corporativo</p>
-    <p style="margin-top:4px;">Desenvolvimento de Apps | Impacto Social | Inovação</p>
-    <div class="footer-links">
-      <a href="mailto:contato@00brother.com"><img src="gmail-icon.png" alt=""> contato@00brother.com</a>
-      <a href="https://instagram.com/00brother" target="_blank" rel="noopener"><img src="instagram-icon.png" alt=""> Instagram</a>
-      <a href="https://wa.me/5546999999999" target="_blank" rel="noopener"><img src="whatsapp-icon.png" alt=""> WhatsApp</a>
-    </div>
-  </footer>
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 00brother – Grupo Corporativo</p>
+        <p>Desenvolvimento de Apps | Impacto Social | Inovação Tecnológica</p>
+        <div class="footer-links">
+            <a href="#">Termos de Uso</a>
+            <a href="#">Política de Privacidade (LGPD)</a>
+            <a href="mailto:contato@00brother.com">contato@00brother.com</a>
+            <a href="https://instagram.com/00brother" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://wa.me/5546999999999" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+    </footer>
 
-  <script>
-    (function() {
-      const imagens = document.querySelectorAll('#bannerContainer img');
-      let indice = 0;
-      const total = imagens.length;
+    <!-- Script do banner rotativo -->
+    <script>
+        (function() {
+            const container = document.getElementById('bannerContainer');
+            const imagens = container.querySelectorAll('img');
+            const dotsContainer = document.getElementById('bannerDots');
+            let indiceAtual = 0;
+            let intervalo;
 
-      function trocarBanner() {
-        imagens[indice].classList.remove('active');
-        indice = (indice + 1) % total;
-        imagens[indice].classList.add('active');
-      }
+            // Criar dots dinamicamente
+            imagens.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', `Banner ${i + 1}`);
+                dot.addEventListener('click', () => mudarSlide(i));
+                dotsContainer.appendChild(dot);
+            });
 
-      setInterval(trocarBanner, 6000);
-    })();
-  </script>
+            const dots = document.querySelectorAll('.dot');
+
+            function mudarSlide(novoIndice) {
+                if (novoIndice === indiceAtual) return;
+                imagens[indiceAtual].classList.remove('active');
+                dots[indiceAtual].classList.remove('active');
+                indiceAtual = novoIndice;
+                imagens[indiceAtual].classList.add('active');
+                dots[indiceAtual].classList.add('active');
+                reiniciarIntervalo();
+            }
+
+            function proximoSlide() {
+                const proximo = (indiceAtual + 1) % imagens.length;
+                mudarSlide(proximo);
+            }
+
+            function iniciarIntervalo() {
+                intervalo = setInterval(proximoSlide, 5000);
+            }
+
+            function reiniciarIntervalo() {
+                clearInterval(intervalo);
+                iniciarIntervalo();
+            }
+
+            // Pausar ao hover para melhor usabilidade
+            container.addEventListener('mouseenter', () => clearInterval(intervalo));
+            container.addEventListener('mouseleave', iniciarIntervalo);
+
+            iniciarIntervalo();
+        })();
+    </script>
+
 </body>
 </html>
