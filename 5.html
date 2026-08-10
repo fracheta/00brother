@@ -269,8 +269,9 @@
         /* Cards de trabalhador */
         .worker-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .worker-card {
@@ -306,6 +307,30 @@
         .worker-card p {
             font-size: 0.9rem;
             color: var(--cinza-texto);
+        }
+
+        /* Botão adicionar funcionário */
+        .add-worker-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--dourado);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all var(--transicao);
+            box-shadow: var(--sombra-suave);
+            text-decoration: none;
+        }
+
+        .add-worker-btn:hover {
+            background: #b8943a;
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-media);
         }
 
         /* Responsividade */
@@ -372,7 +397,7 @@
         <!-- Banner carrossel (8 slides, 4s cada) -->
         <div class="banner-carousel" id="bannerCarousel">
             <div class="slides" id="slidesContainer">
-                <!-- Slides serão gerados dinamicamente pelo JS -->
+                <!-- Slides gerados pelo JS -->
             </div>
             <div class="banner-dots" id="dotsContainer"></div>
         </div>
@@ -396,31 +421,29 @@
             <h2 class="section-title">Nossa Equipe</h2>
             <div class="worker-cards">
                 <div class="worker-card">
-                    <img src="https://i.pravatar.cc/150?img=1" alt="Funcionário">
-                    <h3>Ana Silva</h3>
-                    <p>Desenvolvedora Fullstack</p>
+                    <img src="12.img" alt="Gabriel">
+                    <h3>Gabriel</h3>
+                    <p>Dono da Empresa e Fundador</p>
                 </div>
                 <div class="worker-card">
-                    <img src="https://i.pravatar.cc/150?img=2" alt="Funcionário">
-                    <h3>João Souza</h3>
-                    <p>Designer UX/UI</p>
+                    <img src="13.img" alt="Pérola">
+                    <h3>Pérola</h3>
+                    <p>Fundadora e Designer</p>
                 </div>
                 <div class="worker-card">
-                    <img src="https://i.pravatar.cc/150?img=3" alt="Funcionário">
-                    <h3>Marina Costa</h3>
-                    <p>Gerente de Projetos</p>
-                </div>
-                <div class="worker-card">
-                    <img src="https://i.pravatar.cc/150?img=4" alt="Funcionário">
-                    <h3>Pedro Santos</h3>
-                    <p>Analista de Dados</p>
+                    <img src="14.img" alt="Hubert">
+                    <h3>Hubert</h3>
+                    <p>Fundador e Desenvolvedor</p>
                 </div>
             </div>
+            <a href="#" class="add-worker-btn" onclick="alert('Funcionalidade de adicionar funcionário em breve!'); return false;">
+                <i class="fa-solid fa-plus"></i> Adicionar Funcionário
+            </a>
         </div>
     </div>
 
     <script>
-        // Configuração do banner carrossel (8 slides, 4 seg cada)
+        // Banner carrossel (8 slides)
         const slidesData = [
             { title: "Inovação Social", bg: "https://picsum.photos/id/10/1200/400" },
             { title: "Tecnologia Cidadã", bg: "https://picsum.photos/id/20/1200/400" },
@@ -437,7 +460,6 @@
         let currentIndex = 0;
         let interval;
 
-        // Criar slides e dots
         slidesData.forEach((slide, index) => {
             const slideDiv = document.createElement('div');
             slideDiv.className = 'slide';
@@ -472,7 +494,7 @@
         }
 
         function startInterval() {
-            interval = setInterval(nextSlide, 4000); // 4 segundos
+            interval = setInterval(nextSlide, 4000);
         }
 
         function resetInterval() {
