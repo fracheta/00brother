@@ -41,7 +41,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Card principal */
         .login-card {
             background: var(--branco);
             width: 100%;
@@ -80,7 +79,6 @@
             line-height: 1.5;
         }
 
-        /* Formulário */
         .input-group {
             margin-bottom: 1.5rem;
             text-align: left;
@@ -127,12 +125,6 @@
             background: #fff;
         }
 
-        .input-field input:focus + i,
-        .input-field input:focus ~ i {
-            color: var(--dourado);
-        }
-
-        /* Ajuste para o ícone ficar após o input? Não, o ícone está antes. Só focar no input muda cor do ícone via seletor de irmão não funciona diretamente. Vou usar o foco no contêiner ou usar jQuery. Vou resolver com CSS: o ícone é irmão adjacente? Não, é filho da div. Vou alterar a estrutura ou usar uma classe. Melhor: colocar o ícone como irmão anterior e usar seletor de foco com `:focus-within`. */
         .input-field:focus-within i {
             color: var(--dourado) !important;
         }
@@ -233,7 +225,6 @@
             color: #b8943a;
         }
 
-        /* Responsividade extra */
         @media (max-width: 480px) {
             .login-card {
                 padding: 2rem 1.5rem;
@@ -252,8 +243,8 @@
         <h1>Acessar Painel</h1>
         <p class="lead">Entre com suas credenciais de gestor</p>
 
-        <!-- Formulário de Login (leva para 3.html ao submeter) -->
-        <form action="3.html" method="get">
+        <!-- Alterado para 5.html -->
+        <form action="5.html" method="get">
             <div class="input-group">
                 <label for="email">E-mail institucional</label>
                 <div class="input-field">
@@ -278,7 +269,6 @@
 
         <div class="divider">ou</div>
 
-        <!-- Link para criar conta -->
         <a href="4.html" class="create-account-link">
             <i class="fa-solid fa-user-plus"></i> Criar nova conta
         </a>
